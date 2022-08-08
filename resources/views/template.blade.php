@@ -57,7 +57,7 @@
               <p>Beranda</p>
             </a>
           </li>
-          <li class="nav-item {{in_array($active, ['daftar_aset']) ? 'menu-open' : ''}}">
+          <li class="nav-item {{in_array($active, ['daftar_aset', 'identifikasi_aset']) ? 'menu-open' : ''}}">
             <a href="#" class="nav-link">
               <i class="fas fa-briefcase nav-icon" style="color: #58dfa0;"></i>
               <p>
@@ -73,7 +73,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{url('identifikasi_aset')}}" class="nav-link">
+                <a href="{{url('identifikasi_aset')}}" class="nav-link {{$active === 'identifikasi_aset' ? 'active' : ''}}">
                   <i class="fas fa-pen-squaree nav-icon"></i>
                   <p>Identifikasi Aset</p>
                 </a>
@@ -129,7 +129,7 @@
               </h1>
               <h2>Selamat Datang di FRI</h2>
             @else
-              {{$title}}
+              <h1>{{$title}}</h1>
             @endif
           </div>
         </div><!-- /.row -->

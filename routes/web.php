@@ -21,4 +21,6 @@ Route::post('/login', [App\Http\Controllers\LoginController::class, 'auth']);
 Route::middleware('auth')->group(function () {
   Route::get('/beranda', [App\Http\Controllers\BerandaController::class, 'index']);
   Route::resource('aset', App\Http\Controllers\AsetController::class);
+  Route::get('identifikasi_aset', [App\Http\Controllers\AsetController::class, 'identifikasiAset']);
+  Route::post('identifikasi_aset', [App\Http\Controllers\AsetController::class, 'getIdentifikasiAset']);
 });

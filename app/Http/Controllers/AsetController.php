@@ -26,6 +26,27 @@ class AsetController extends Controller
     ]);
   }
 
+  public function identifikasiAset()
+  {
+    return view('identifikasi_aset', [
+      'beranda' => false,
+      'title' => 'Identifikasi Aset',
+      'active' => 'identifikasi_aset',
+    ]);
+  }
+
+  public function getIdentifikasiAset(Request $request)
+  {
+    return view('detail_aset', [
+      'beranda' => false,
+      'title' => 'Identifikasi Aset',
+      'active' => 'identifikasi_aset',
+      'aset' => Aset::where('nama', '=', $request->input('nama'))
+                      ->where('kode', '=', $request->input('kode'))
+                      ->first(),
+    ]);
+  }
+
     /**
      * Show the form for creating a new resource.
      *
