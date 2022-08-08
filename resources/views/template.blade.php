@@ -57,7 +57,7 @@
               <p>Beranda</p>
             </a>
           </li>
-          <li class="nav-item {{in_array($active, ['daftar_aset', 'identifikasi_aset']) ? 'menu-open' : ''}}">
+          <li class="nav-item {{in_array($active, ['daftar_aset', 'identifikasi_aset', 'detail_aset', 'status_aset']) ? 'menu-open' : ''}}">
             <a href="#" class="nav-link">
               <i class="fas fa-briefcase nav-icon" style="color: #58dfa0;"></i>
               <p>
@@ -67,7 +67,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{url('aset')}}" class="nav-link {{$active === 'daftar_aset' ? 'active' : ''}}">
+                <a href="{{url('aset')}}" class="nav-link {{in_array($active, ['daftar_aset', 'detail_aset']) ? 'active' : ''}}">
                   <i class="nav-icon fas fa-th"></i>
                   <p>Daftar Aset</p>
                 </a>
@@ -79,7 +79,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{url('status_aset')}}" class="nav-link {{$active === 'status_aset' ? 'active' : ''}}">
                   <i class="fas fa-book nav-icon"></i>
                   <p>Status Aset</p>
                 </a>

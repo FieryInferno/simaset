@@ -15,7 +15,7 @@ class AsetController extends Controller
     if ($aset) {
       $aset = Aset::where('nama', 'like', '%' . $aset . '%')->get();
     } else {
-      $aset = Aset::all();
+      $aset = Aset::where('tipe', '=', null)->get();
     }
 
     return view('aset', [
@@ -47,6 +47,53 @@ class AsetController extends Controller
     ]);
   }
 
+  public function show(Aset $aset)
+  {
+    return view('detail_aset', [
+      'beranda' => false,
+      'title' => 'Detail Aset',
+      'active' => 'detail_aset',
+      'aset' => $aset,
+    ]);
+  }
+
+  public function statusAset(Request $request)
+  {
+    $status = $request->query('status');
+    $aset = '';
+
+    switch ($status) {
+      case 'masuk':
+        $aset = Aset::where('tipe', '=', 'pengadaan')->get();
+        break;
+      case 'diperbaiki':
+        $aset = Aset::where('tipe', '=', 'maintenance')->get();
+        break;
+      
+      default:
+        # code...
+        break;
+    }
+
+    return view('status_aset', [
+      'beranda' => false,
+      'title' => 'Status Aset',
+      'active' => 'status_aset',
+      'aset' => $aset,
+      'status' => $status,
+    ]);
+  }
+
+  public function showStatusAset(Aset $aset)
+  {
+    return view('detail_aset', [
+      'beranda' => false,
+      'title' => 'Status Aset',
+      'active' => 'status_aset',
+      'aset' => $aset,
+    ]);
+  }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -64,17 +111,6 @@ class AsetController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Aset  $aset
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Aset $aset)
     {
         //
     }

@@ -11,11 +11,14 @@ return new class extends Migration
     Schema::create('aset', function (Blueprint $table) {
       $table->id();
       $table->string('nama');
-      $table->string('spesifikasi');
-      $table->string('kode');
-      $table->string('lokasi');
+      $table->string('spesifikasi')->nullable();
+      $table->string('kode')->nullable();
+      $table->string('lokasi')->nullable();
       $table->string('jumlah');
-      $table->string('gambar');
+      $table->string('gambar')->nullable();
+      $table->date('tanggal')->nullable();
+      $table->string('keterangan')->nullable();
+      $table->enum('tipe', ['pengadaan', 'maintenance'])->nullable();
       $table->timestamps();
     });
   }

@@ -23,4 +23,6 @@ Route::middleware('auth')->group(function () {
   Route::resource('aset', App\Http\Controllers\AsetController::class);
   Route::get('identifikasi_aset', [App\Http\Controllers\AsetController::class, 'identifikasiAset']);
   Route::post('identifikasi_aset', [App\Http\Controllers\AsetController::class, 'getIdentifikasiAset']);
+  Route::get('status_aset', [App\Http\Controllers\AsetController::class, 'statusAset']);
+  Route::get('status_aset/{aset}', [App\Http\Controllers\AsetController::class, 'showStatusAset']);
 });
