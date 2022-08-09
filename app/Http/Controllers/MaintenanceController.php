@@ -17,26 +17,42 @@ class MaintenanceController extends Controller
     ]);
   }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+  public function create()
+  {
+    return view('form_maintenance', [
+      'beranda' => false,
+      'title' => 'Pengajuan Maintenance Aset',
+      'active' => 'maintenance_aset',
+    ]);
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+  public function store(Request $request)
+  {
+    $request->validate([
+      'nama' => 'required',
+      'tanggal' => 'required',
+      'kode' => 'required',
+      'jumlah' => 'required',
+      'lokasi' => 'required',
+      'foto' => 'required',
+    ]);
+
+    $file = $request->file('foto');
+    $file->move('images', $file->getClientOriginalName());
+    $aset = new Aset;
+    $aset->nama = $request->nama;
+    $aset->kode = $request->kode;
+    $aset->tanggal = $request->tanggal;
+    $aset->jumlah = $request->jumlah;
+    $aset->lokasi = $request->lokasi;
+    $aset->tipe = 'maintenance';
+    $aset->status = 'menunggu_diterima';
+    $aset->gambar = $file->getClientOriginalName();
+
+    $aset->save();
+
+    return redirect('maintenance_aset')->with('success', 'Berhasil tambah aset.');
+  }
 
     /**
      * Display the specified resource.
