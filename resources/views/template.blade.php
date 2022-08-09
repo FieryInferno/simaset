@@ -59,7 +59,7 @@
               <p>Beranda</p>
             </a>
           </li>
-          <li class="nav-item {{in_array($active, ['daftar_aset', 'identifikasi_aset', 'detail_aset', 'status_aset', 'tambah_aset', 'pengadaan_aset']) ? 'menu-open' : ''}}">
+          <li class="nav-item {{in_array($active, ['daftar_aset', 'identifikasi_aset', 'detail_aset', 'status_aset', 'tambah_aset', 'pengadaan_aset', 'maintenance_aset']) ? 'menu-open' : ''}}">
             <a href="#" class="nav-link">
               <i class="fas fa-briefcase nav-icon" style="color: #58dfa0;"></i>
               <p>
@@ -75,7 +75,7 @@
                 </a>
               </li>
               @if (auth()->user()->role !== 'wadek')
-                <li class="nav-item {{in_array($active, ['pengadaan_aset']) ? 'menu-open' : ''}}">
+                <li class="nav-item {{in_array($active, ['pengadaan_aset', 'maintenance_aset']) ? 'menu-open' : ''}}">
                   <a href="#" class="nav-link">
                     <i class="fas fa-pen-square nav-icon"></i>
                     <p>

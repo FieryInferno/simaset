@@ -3,7 +3,7 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row mb-1 d-flex justify-content-end">
-        <a href="{{url('pengadaan_aset/create')}}" class="btn btn-primary">Tambah</a>
+        <a href="{{url('maintenance_aset/create')}}" class="btn btn-primary">Tambah</a>
       </div>
       @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -17,8 +17,9 @@
         $columns = [
           'Tanggal' => 'tanggal',
           'Nama Aset' => 'nama',
-          'Keterangan' => 'keterangan',
+          'Kode' => 'kode',
           'Jumlah' => 'jumlah',
+          'Lokasi' => 'lokasi',
           'Status' => ['render' => function ($data) {
             switch ($data->status) {
               case 'menunggu_diterima':
@@ -34,7 +35,7 @@
             }
           }],
           'Aksi' => ['render' => function ($data) { ?>
-            <a href="{{url('pengadaan_aset/' . $data->id . '/edit')}}" class="btn btn-light">Edit</a>
+            <a href="{{url('maintenance_aset/' . $data->id . '/edit')}}" class="btn btn-light">Edit</a>
             <button
               type="button"
               class="btn btn-light"
@@ -57,7 +58,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #58dfa0;">Close</button>
-                    <form action="{{url('pengadaan_aset/' . $data->id)}}" method="post">
+                    <form action="{{url('maintenance_aset/' . $data->id)}}" method="post">
                       @csrf
                       {{method_field('DELETE')}}
                       <button type="submit" class="btn btn-danger">Hapus</button>
@@ -66,7 +67,8 @@
                 </div>
               </div>
             </div>
-          <?php }]
+          <?php
+          }]
         ];
       ?>
       <x-table :columns=$columns :dataList=$data/>

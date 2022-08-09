@@ -13,7 +13,7 @@ class PengadaanController extends Controller
       'beranda' => false,
       'title' => 'Daftar Pengajuan Pengadaan Aset',
       'active' => 'pengadaan_aset',
-      'aset' => Aset::where('tipe', '=', 'pengadaan')->get(),
+      'data' => Aset::where('tipe', '=', 'pengadaan')->get(),
     ]);
   }
 
