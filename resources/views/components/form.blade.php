@@ -25,6 +25,15 @@
                 value="{{$value['value']}}"
               >
               @break
+            @case('date')
+              <input
+                type="date"
+                class="form-control"
+                placeholder="Ketik disini..."
+                name="{{$key}}"
+                value="{{$value['value']}}"
+              >
+              @break
             @case('textarea')
               <textarea
                 name="{{$key}}"

@@ -17,26 +17,41 @@ class PengadaanController extends Controller
     ]);
   }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+  public function create()
+  {
+    return view('form_pengadaan', [
+      'beranda' => false,
+      'title' => 'Pengajuan Pengadaan Aset',
+      'active' => 'pengadaan_aset',
+    ]);
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+  public function store(Request $request)
+  {
+    $request->validate([
+      'nama' => 'required',
+      'tanggal' => 'required',
+      'keterangan' => 'required',
+      'jumlah' => 'required',
+      'foto' => 'required',
+    ]);
+
+    $file = $request->file('foto');
+    $file->move('images', $file->getClientOriginalName());
+    $aset = new Aset;
+    $aset->nama = $request->nama;
+    $aset->keterangan = $request->keterangan;
+    $aset->tanggal = $request->tanggal;
+    $aset->kode = $request->kode;
+    $aset->jumlah = $request->jumlah;
+    $aset->tipe = 'pengadaan';
+    $aset->status = 'menunggu_diterima';
+    $aset->gambar = $file->getClientOriginalName();
+
+    $aset->save();
+
+    return redirect('pengadaan_aset')->with('success', 'Berhasil tambah aset.');
+  }
 
     /**
      * Display the specified resource.

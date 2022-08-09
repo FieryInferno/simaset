@@ -31,7 +31,16 @@
               <td>{{$a->nama}}</td>
               <td>{{$a->keterangan}}</td>
               <td>{{$a->jumlah}}</td>
-              <td>{{$a->tanggal}}</td>
+              <td>
+                @switch($a->status)
+                  @case('menunggu_diterima')
+                    Menunggu diterima
+                    @break
+                  @case('ditolak')
+                    Ditolak
+                    @break
+                @endswitch
+              </td>
               <td>{{$a->tanggal}}</td>
             </tr>
           @endforeach

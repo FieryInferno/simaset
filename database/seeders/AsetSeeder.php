@@ -42,6 +42,7 @@ class AsetSeeder extends Seeder
         'spesifikasi' => null,
         'kode' => null,
         'lokasi' => null,
+        'status' => 'menunggu_diterima',
       ], 
       [
         'nama' => 'HP',
@@ -53,6 +54,7 @@ class AsetSeeder extends Seeder
         'lokasi' => 'Lab 1',
         'spesifikasi' => null,
         'keterangan' => null,
+        'status' => 'ditolak',
       ],
     ]); 
   }
