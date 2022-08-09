@@ -1,6 +1,6 @@
 <button
   type="button"
-  class="btn btn-light mb-5"
+  class="btn btn-light"
   data-toggle="modal"
   data-target="#hapus"
 >

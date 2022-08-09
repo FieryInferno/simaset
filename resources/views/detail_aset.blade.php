@@ -102,8 +102,10 @@
         @endif
       @else
         <div class="d-flex justify-content-center">
-          <a href="{{url('aset/' . $aset->id . '/edit')}}" class="btn btn-light mr-1 mb-5">Edit</a>
-          <x-button-modal url="{{url('aset/' . $aset->id)}}"/>
+          <div class="mb-5">
+            <a href="{{url('aset/' . $aset->id . '/edit')}}" class="btn btn-light mr-1">Edit</a>
+            <x-button-modal url="{{url('aset/' . $aset->id)}}"/>
+          </div>
         </div>
       @endif
     </div><!-- /.container-fluid -->

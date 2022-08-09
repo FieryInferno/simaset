@@ -53,6 +53,44 @@ class PengadaanController extends Controller
     return redirect('pengadaan_aset')->with('success', 'Berhasil tambah aset.');
   }
 
+  public function edit($id)
+  {
+    return view('form_pengadaan', [
+      'beranda' => false,
+      'title' => 'Pengajuan Pengadaan Aset',
+      'active' => 'pengadaan_aset',
+      'aset' => Aset::find($id),
+    ]);
+  }
+
+  public function update(Request $request, $id)
+  {
+    $request->validate([
+      'nama' => 'required',
+      'tanggal' => 'required',
+      'keterangan' => 'required',
+      'jumlah' => 'required',
+    ]);
+
+    $aset = Aset::find($id);
+
+    if ($request->file('foto')) {
+      $file = $request->file('foto');
+      $file->move('images', $file->getClientOriginalName());
+      $aset->gambar = $file->getClientOriginalName();
+    }
+    
+    $aset->nama = $request->nama;
+    $aset->keterangan = $request->keterangan;
+    $aset->tanggal = $request->tanggal;
+    $aset->kode = $request->kode;
+    $aset->jumlah = $request->jumlah;
+
+    $aset->save();
+
+    return redirect('pengadaan_aset')->with('success', 'Berhasil tambah aset.');
+  }
+
     /**
      * Display the specified resource.
      *
@@ -70,10 +108,6 @@ class PengadaanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -82,10 +116,6 @@ class PengadaanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

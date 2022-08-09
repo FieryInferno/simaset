@@ -41,7 +41,10 @@
                     @break
                 @endswitch
               </td>
-              <td>{{$a->tanggal}}</td>
+              <td>
+                <a href="{{url('pengadaan_aset/' . $a->id . '/edit')}}" class="btn btn-light">Edit</a>
+                <x-button-modal url="{{url('pengadaan_aset/' . $a->id)}}"/>
+              </td>
             </tr>
           @endforeach
         </tbody>
