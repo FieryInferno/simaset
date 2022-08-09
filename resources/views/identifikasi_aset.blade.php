@@ -9,13 +9,16 @@
             'nama' => [
               'label' => 'Nama Aset',
               'type' => 'input',
+              'value' => null,
             ],
             'kode' => [
               'label' => 'kode',
               'type' => 'input',
+              'value' => null,
             ],
           ],
           'buttonText' => 'Cari',
+          'mode' => 'search',
         ];
       ?>
       <x-form :form=$form/>

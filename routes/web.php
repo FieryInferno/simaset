@@ -28,4 +28,5 @@ Route::middleware('auth')->group(function () {
   Route::get('akun', [App\Http\Controllers\AkunController::class, 'index']);
   Route::post('akun/{user}', [App\Http\Controllers\AkunController::class, 'update']);
   Route::post('logout', [App\Http\Controllers\LoginController::class, 'logout']);
+  Route::resource('pengadaan_aset', App\Http\Controllers\PengadaanController::class);
 });

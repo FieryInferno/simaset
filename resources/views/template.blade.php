@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="{{asset('plugins')}}/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('dist')}}/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{asset('plugins')}}/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{asset('plugins')}}/datatables-responsive/css/responsive.bootstrap4.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -72,24 +74,49 @@
                   <p>Daftar Aset</p>
                 </a>
               </li>
+              @if (auth()->user()->role !== 'wadek')
+                <li class="nav-item {{in_array($active, ['pengadaan_aset']) ? 'menu-open' : ''}}">
+                  <a href="#" class="nav-link {{in_array($active, ['pengadaan_aset']) ? 'active' : ''}}">
+                    <i class="fas fa-pen-square nav-icon"></i>
+                    <p>
+                      Pengajuan Aset
+                      <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{url('pengadaan_aset')}}" class="nav-link {{$active === 'pengadaan_aset' ? 'active' : ''}}">
+                        <p>Pengajuan Pengadaan Aset</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{{url('maintenance_aset')}}" class="nav-link {{$active === 'maintenance_aset' ? 'active' : ''}}">
+                        <p>Pengajuan Maintenance Aset</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              @endif
               <li class="nav-item">
                 <a href="{{url('identifikasi_aset')}}" class="nav-link {{$active === 'identifikasi_aset' ? 'active' : ''}}">
-                  <i class="fas fa-pen-squaree nav-icon"></i>
+                  <i class="fas fa-columns nav-icon"></i>
                   <p>Identifikasi Aset</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{url('status_aset')}}" class="nav-link {{$active === 'status_aset' ? 'active' : ''}}">
-                  <i class="fas fa-book nav-icon"></i>
-                  <p>Status Aset</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="fas fa-folder-open nav-icon"></i>
-                  <p>Rekapitulasi Aset</p>
-                </a>
-              </li>
+              @if (auth()->user()->role === 'wadek')
+                <li class="nav-item">
+                  <a href="{{url('status_aset')}}" class="nav-link {{$active === 'status_aset' ? 'active' : ''}}">
+                    <i class="fas fa-book nav-icon"></i>
+                    <p>Status Aset</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="fas fa-folder-open nav-icon"></i>
+                    <p>Rekapitulasi Aset</p>
+                  </a>
+                </li>
+              @endif
             </ul>
           </li>
         </ul>
@@ -231,6 +258,10 @@
 <script src="{{asset('plugins')}}/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist')}}/js/adminlte.min.js"></script>
+<script src="{{asset('plugins')}}/datatables/jquery.dataTables.min.js"></script>
+<script src="{{asset('plugins')}}/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{asset('plugins')}}/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="{{asset('plugins')}}/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script>
   function previewImg() {
     const gambar      = document.querySelector('#foto');
@@ -242,6 +273,10 @@
       imgPreview.src = e.target.result;
     }
   }
+
+  $(function () {
+    $("#table").DataTable();
+  });
 </script>
 </body>
 </html>
