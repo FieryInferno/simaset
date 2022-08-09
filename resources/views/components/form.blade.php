@@ -1,6 +1,7 @@
 <div class="card" style="background-color: #58dfa0;box-shadow: 0 0 0;">
   <form method="post" action="{{$form['action']}}" enctype="multipart/form-data">
     @csrf
+    {{ $form['mode'] === 'edit' ? method_field('PUT') : '' }}
     <div class="card-body">
       @if ($errors->any())
         <div class="alert alert-danger">
@@ -21,6 +22,7 @@
                 class="form-control"
                 placeholder="Ketik disini..."
                 name="{{$key}}"
+                value="{{$value['value']}}"
               >
               @break
             @case('textarea')
@@ -30,7 +32,7 @@
                 rows="5"
                 placeholder="Ketik disini..."
                 class="form-control"
-              ></textarea>
+              >{{$value['value']}}</textarea>
               @break
             @case('file')
               <input

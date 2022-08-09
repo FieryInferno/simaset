@@ -53,50 +53,57 @@
           </tbody>
         </table>
       </div>
-      @if ($aset->tipe)
+      @if (auth()->user()->role === 'wadek')
+        @if ($aset->tipe)
+          <div class="d-flex justify-content-center">
+            <button
+              type="button"
+              class="btn btn-light mr-5 mb-5"
+              data-toggle="modal"
+              data-target="#setuju"
+            >
+              Setuju
+            </button>
+            <div class="modal fade" id="setuju" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    Apakah anda yakin akan menyetujui pengajuan ini?
+                  </div>
+                  <div class="modal-footer" style="justify-content: center;">
+                    <button type="button" class="btn btn-secondary" style="background-color: #58dfa0;">Tidak</button>
+                    <button type="button" class="btn btn-primary" style="background-color: #58dfa0;">Ya</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="btn btn-light mb-5"
+              data-toggle="modal"
+              data-target="#tolak"
+            >
+              Tolak
+            </button>
+            <div class="modal fade" id="tolak" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    Apakah anda yakin akan menolak pengajuan ini?
+                  </div>
+                  <div class="modal-footer" style="justify-content: center;">
+                    <button type="button" class="btn btn-secondary" style="background-color: #58dfa0;">Tidak</button>
+                    <button type="button" class="btn btn-primary" style="background-color: #58dfa0;">Ya</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        @endif
+      @else
         <div class="d-flex justify-content-center">
-          <button
-            type="button"
-            class="btn btn-light mr-5 mb-5"
-            data-toggle="modal"
-            data-target="#setuju"
-          >
-            Setuju
-          </button>
-          <div class="modal fade" id="setuju" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-body">
-                  Apakah anda yakin akan menyetujui pengajuan ini?
-                </div>
-                <div class="modal-footer" style="justify-content: center;">
-                  <button type="button" class="btn btn-secondary" style="background-color: #58dfa0;">Tidak</button>
-                  <button type="button" class="btn btn-primary" style="background-color: #58dfa0;">Ya</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button
-            type="button"
-            class="btn btn-light mb-5"
-            data-toggle="modal"
-            data-target="#tolak"
-          >
-            Tolak
-          </button>
-          <div class="modal fade" id="tolak" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-body">
-                  Apakah anda yakin akan menolak pengajuan ini?
-                </div>
-                <div class="modal-footer" style="justify-content: center;">
-                  <button type="button" class="btn btn-secondary" style="background-color: #58dfa0;">Tidak</button>
-                  <button type="button" class="btn btn-primary" style="background-color: #58dfa0;">Ya</button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <a href="{{url('aset/' . $aset->id . '/edit')}}" class="btn btn-light mr-1 mb-5">Edit</a>
+          <a href="{{url('aset/' . $aset->id . '/edit')}}" class="btn btn-light mb-5">Hapus</a>
         </div>
       @endif
     </div><!-- /.container-fluid -->

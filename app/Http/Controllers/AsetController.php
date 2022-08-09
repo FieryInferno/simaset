@@ -96,7 +96,7 @@ class AsetController extends Controller
 
   public function create()
   {
-    return view('tambah_aset', [
+    return view('form_aset', [
       'beranda' => false,
       'title' => 'Tambah Aset',
       'active' => 'tambah_aset',
@@ -129,28 +129,42 @@ class AsetController extends Controller
     return redirect('aset')->with('success', 'Berhasil tambah aset.');
   }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Aset  $aset
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Aset $aset)
-    {
-        //
+  public function edit(Aset $aset)
+  {
+    return view('form_aset', [
+      'beranda' => false,
+      'title' => 'Edit Aset',
+      'active' => 'tambah_aset',
+      'aset' => $aset,
+    ]);
+  }
+
+  public function update(Request $request, Aset $aset)
+  {
+    $request->validate([
+      'nama' => 'required',
+      'spesifikasi' => 'required',
+      'kode' => 'required',
+      'lokasi' => 'required',
+      'jumlah' => 'required',
+    ]);
+
+    if ($request->file('foto')) {
+      $file = $request->file('foto');
+      $file->move('images', $file->getClientOriginalName());
+      $aset->gambar = $file->getClientOriginalName();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Aset  $aset
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Aset $aset)
-    {
-        //
-    }
+    $aset->nama = $request->nama;
+    $aset->spesifikasi = $request->spesifikasi;
+    $aset->kode = $request->kode;
+    $aset->lokasi = $request->lokasi;
+    $aset->jumlah = $request->jumlah;
+
+    $aset->save();
+
+    return redirect('aset')->with('success', 'Berhasil edit aset.');
+  }
 
     /**
      * Remove the specified resource from storage.
