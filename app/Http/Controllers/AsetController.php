@@ -166,14 +166,10 @@ class AsetController extends Controller
     return redirect('aset')->with('success', 'Berhasil edit aset.');
   }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Aset  $aset
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Aset $aset)
-    {
-        //
-    }
+  public function destroy(Aset $aset)
+  {
+    $aset->delete();
+    
+    return redirect('aset')->with('success', 'Berhasil hapus aset.');
+  }
 }
