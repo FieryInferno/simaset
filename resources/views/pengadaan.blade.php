@@ -3,7 +3,7 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row mb-1 d-flex justify-content-end">
-        <a href="{{url('aset/create')}}" class="btn btn-primary">Tambah</a>
+        <a href="{{url('pengadaan_aset/create')}}" class="btn btn-primary">Tambah</a>
       </div>
       @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">

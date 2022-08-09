@@ -9,7 +9,7 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset('plugins')}}/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{asset('dist')}}/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{asset('dist')}}/css/adminlte.css">
   <link rel="stylesheet" href="{{asset('plugins')}}/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="{{asset('plugins')}}/datatables-responsive/css/responsive.bootstrap4.min.css">
 </head>
@@ -59,7 +59,7 @@
               <p>Beranda</p>
             </a>
           </li>
-          <li class="nav-item {{in_array($active, ['daftar_aset', 'identifikasi_aset', 'detail_aset', 'status_aset', 'tambah_aset']) ? 'menu-open' : ''}}">
+          <li class="nav-item {{in_array($active, ['daftar_aset', 'identifikasi_aset', 'detail_aset', 'status_aset', 'tambah_aset', 'pengadaan_aset']) ? 'menu-open' : ''}}">
             <a href="#" class="nav-link">
               <i class="fas fa-briefcase nav-icon" style="color: #58dfa0;"></i>
               <p>
@@ -76,7 +76,7 @@
               </li>
               @if (auth()->user()->role !== 'wadek')
                 <li class="nav-item {{in_array($active, ['pengadaan_aset']) ? 'menu-open' : ''}}">
-                  <a href="#" class="nav-link {{in_array($active, ['pengadaan_aset']) ? 'active' : ''}}">
+                  <a href="#" class="nav-link">
                     <i class="fas fa-pen-square nav-icon"></i>
                     <p>
                       Pengajuan Aset

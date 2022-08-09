@@ -2773,15 +2773,15 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #07a45b;
+  border-color: #07a45b;
   box-shadow: none;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  background-color: #07dd79;
+  border-color: #07dd79;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -4565,7 +4565,7 @@ input[type="button"].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #007bff;
+  background-color: #58dfa0;
 }
 
 .nav-fill > .nav-link,
