@@ -41,8 +41,8 @@ class AsetController extends Controller
       'beranda' => false,
       'title' => 'Identifikasi Aset',
       'active' => 'identifikasi_aset',
-      'aset' => Aset::where('nama', '=', $request->input('nama'))
-                      ->where('kode', '=', $request->input('kode'))
+      'aset' => Aset::where('nama', '=', $request->nama)
+                      ->where('kode', '=', $request->kode)
                       ->first(),
     ]);
   }

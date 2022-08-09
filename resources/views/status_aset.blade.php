@@ -22,6 +22,15 @@
           </div>
         </div>
       @else
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="card">
+              <div class="card-body text-center">
+                <h3>Aset {{$status}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
         <x-list-aset :aset=$aset :status=$status/>
       @endif
     </div><!-- /.container-fluid -->

@@ -25,4 +25,6 @@ Route::middleware('auth')->group(function () {
   Route::post('identifikasi_aset', [App\Http\Controllers\AsetController::class, 'getIdentifikasiAset']);
   Route::get('status_aset', [App\Http\Controllers\AsetController::class, 'statusAset']);
   Route::get('status_aset/{aset}', [App\Http\Controllers\AsetController::class, 'showStatusAset']);
+  Route::get('akun', [App\Http\Controllers\AkunController::class, 'index']);
+  Route::post('akun/{user}', [App\Http\Controllers\AkunController::class, 'update']);
 });
