@@ -2,6 +2,11 @@
 @section('content')
   <div class="content">
     <div class="container-fluid">
+      @if (auth()->user()->role !== 'wadek')
+        <div class="row mb-1 d-flex justify-content-end">
+          <a href="{{url('aset/create')}}" class="btn btn-primary">Tambah</a>
+        </div>
+      @endif
       <form action="" method="get">
         <div class="row mb-2">
             <div class="col-lg-11">
@@ -19,6 +24,14 @@
             </div>
         </div>
       </form>
+      @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ session('success') }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      @endif
       <x-list-aset :aset=$aset/>
     </div><!-- /.container-fluid -->
   </div>

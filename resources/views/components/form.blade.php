@@ -1,28 +1,55 @@
 <div class="card" style="background-color: #58dfa0;box-shadow: 0 0 0;">
-  <form method="post" action="{{url('identifikasi_aset')}}">
+  <form method="post" action="{{$form['action']}}" enctype="multipart/form-data">
     @csrf
     <div class="card-body">
-      <div class="form-group">
-        <label>Nama Aset</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Ketik disini..."
-          name="nama"
-        >
-      </div>
-      <div class="form-group">
-        <label>Kode</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Ketik disini..."
-          name="kode"
-        >
-      </div>
+      @if ($errors->any())
+        <div class="alert alert-danger">
+          <ul>
+            @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+      @endif
+      @foreach ($form['fields'] as $key => $value)
+        <div class="form-group">
+          <label>{{$value['label']}}</label>
+          @switch ($value['type'])
+            @case('input')
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Ketik disini..."
+                name="{{$key}}"
+              >
+              @break
+            @case('textarea')
+              <textarea
+                name="{{$key}}"
+                cols="20"
+                rows="5"
+                placeholder="Ketik disini..."
+                class="form-control"
+              ></textarea>
+              @break
+            @case('file')
+              <input
+                type="file"
+                class="form-control-file"
+                name="foto"
+                onchange="previewImg()"
+                id="foto"
+              >
+              <div class="text-center">
+                <img class="img-preview" width="100%">
+              </div>
+              @break
+          @endswitch
+        </div>
+      @endforeach
     </div>
     <div class="card-footer text-center">
-      <button type="submit" class="btn btn-light">Cari</button>
+      <button type="submit" class="btn btn-light">{{$form['buttonText']}}</button>
     </div>
   </form>
 </div>

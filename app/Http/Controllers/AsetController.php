@@ -94,26 +94,40 @@ class AsetController extends Controller
     ]);
   }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+  public function create()
+  {
+    return view('tambah_aset', [
+      'beranda' => false,
+      'title' => 'Tambah Aset',
+      'active' => 'tambah_aset',
+    ]);
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+  public function store(Request $request)
+  {
+    $request->validate([
+      'nama' => 'required',
+      'spesifikasi' => 'required',
+      'kode' => 'required',
+      'lokasi' => 'required',
+      'jumlah' => 'required',
+      'foto' => 'required',
+    ]);
+
+    $file = $request->file('foto');
+    $file->move('images', $file->getClientOriginalName());
+    $aset = new Aset;
+    $aset->nama = $request->nama;
+    $aset->spesifikasi = $request->spesifikasi;
+    $aset->kode = $request->kode;
+    $aset->lokasi = $request->lokasi;
+    $aset->jumlah = $request->jumlah;
+    $aset->gambar = $file->getClientOriginalName();
+
+    $aset->save();
+
+    return redirect('aset')->with('success', 'Berhasil tambah aset.');
+  }
 
     /**
      * Show the form for editing the specified resource.
