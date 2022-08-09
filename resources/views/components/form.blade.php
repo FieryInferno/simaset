@@ -52,7 +52,7 @@
                 id="foto"
               >
               <div class="text-center">
-                <img class="img-preview" width="100%">
+                <img class="img-preview" width="100%" src="{{asset('images/' . $value['value'])}}")>
               </div>
               @break
           @endswitch

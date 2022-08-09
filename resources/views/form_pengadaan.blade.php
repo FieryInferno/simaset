@@ -29,6 +29,7 @@
             'gambar' => [
               'label' => 'Gambar',
               'type' => 'file',
+              'value' => isset($aset) ? $aset->gambar : null,
             ],
           ],
           'buttonText' => 'Simpan',
