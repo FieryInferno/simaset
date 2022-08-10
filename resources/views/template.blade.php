@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="{{asset('dist')}}/css/adminlte.css">
   <link rel="stylesheet" href="{{asset('plugins')}}/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="{{asset('plugins')}}/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{asset('plugins')}}/select2/css/select2.min.css">
+  <link rel="stylesheet" href="{{asset('plugins')}}/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -119,6 +121,14 @@
               @endif
             </ul>
           </li>
+          @if (auth()->user()->role !== 'wadek')
+            <li class="nav-item">
+              <a href="{{url('berkas')}}" class="nav-link {{$active === 'berkas' ? 'active' : ''}}">
+                <i class="fas fa-file nav-icon" style="color: #58dfa0;"></i>
+                <p>Berkas</p>
+              </a>
+            </li>
+          @endif
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -262,6 +272,7 @@
 <script src="{{asset('plugins')}}/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="{{asset('plugins')}}/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="{{asset('plugins')}}/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="{{asset('plugins')}}/select2/js/select2.full.min.js"></script>
 <script>
   function previewImg() {
     const gambar      = document.querySelector('#foto');
@@ -275,7 +286,8 @@
   }
 
   $(function () {
-    $("#table").DataTable();
+    $("#table").DataTable({"order": []});
+    $('.select2bs4').select2({theme: 'bootstrap4'});
   });
 </script>
 </body>

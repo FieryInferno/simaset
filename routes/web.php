@@ -30,4 +30,5 @@ Route::middleware('auth')->group(function () {
   Route::post('logout', [App\Http\Controllers\LoginController::class, 'logout']);
   Route::resource('pengadaan_aset', App\Http\Controllers\PengadaanController::class);
   Route::resource('maintenance_aset', App\Http\Controllers\MaintenanceController::class);
+  Route::get('berkas', [App\Http\Controllers\BerkasController::class, 'index']);
 });
