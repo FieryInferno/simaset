@@ -172,4 +172,13 @@ class AsetController extends Controller
     
     return redirect('aset')->with('success', 'Berhasil hapus aset.');
   }
+
+  public function updateStatusAset(Aset $aset, $status)
+  {
+    $aset->status = $status;
+
+    $aset->save();
+
+    return redirect()->back()->with('success', 'Berhasil edit status aset.');
+  }
 }

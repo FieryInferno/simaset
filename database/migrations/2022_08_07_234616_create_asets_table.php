@@ -19,7 +19,7 @@ return new class extends Migration
       $table->date('tanggal')->nullable();
       $table->string('keterangan')->nullable();
       $table->enum('tipe', ['pengadaan', 'maintenance'])->nullable();
-      $table->enum('status', ['menunggu_diterima', 'ditolak'])->nullable();
+      $table->enum('status', ['menunggu_diterima', 'ditolak', 'diterima'])->nullable();
       $table->timestamps();
     });
   }

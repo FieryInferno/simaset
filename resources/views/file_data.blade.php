@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SISP</title>
+  <title>Filedata</title>
   <link rel="stylesheet" href="{{ public_path('dist/css/adminlte.min.css') }}">
 </head>
 <body>
@@ -37,7 +37,7 @@
       <?php }];
     ?>
 
-    <h2 class="text-center">{{$berkas . ' Aset' . $bulan . ' ' . $tahun}}</h2>
+    <h2 class="text-center">{{$berkas . ' Aset ' . $bulan . ' ' . $tahun}}</h2>
     <table class="table" id="table">
       <thead>
         <tr>

@@ -61,7 +61,7 @@
               <p>Beranda</p>
             </a>
           </li>
-          <li class="nav-item {{in_array($active, ['daftar_aset', 'identifikasi_aset', 'detail_aset', 'status_aset', 'tambah_aset', 'pengadaan_aset', 'maintenance_aset']) ? 'menu-open' : ''}}">
+          <li class="nav-item {{in_array($active, ['daftar_aset', 'identifikasi_aset', 'detail_aset', 'status_aset', 'tambah_aset', 'pengadaan_aset', 'maintenance_aset', 'berkas']) ? 'menu-open' : ''}}">
             <a href="#" class="nav-link">
               <i class="fas fa-briefcase nav-icon"></i>
               <p>
@@ -113,7 +113,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{{url('berkas')}}" class="nav-link {{$active === 'berkas' ? 'active' : ''}}">
                     <i class="fas fa-folder-open nav-icon"></i>
                     <p>Rekapitulasi Aset</p>
                   </a>

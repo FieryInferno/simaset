@@ -2,6 +2,7 @@
 @section('content')
   <div class="content">
     <div class="container-fluid">
+      <x-alert-success/>
       <div class="text-center mb-5">
         <img src="{{asset('images/' . $aset->gambar)}}" style="width: 15rem;">
       </div>
@@ -53,8 +54,8 @@
           </tbody>
         </table>
       </div>
-      @if (auth()->user()->role === 'wadek')
-        @if ($aset->tipe)
+      @if (auth()->user()->role === 'wadek' && $aset->tipe)
+        @if ($aset->status !== 'menunggu_diterima')
           <div class="d-flex justify-content-center">
             <button
               type="button"
@@ -71,8 +72,12 @@
                     Apakah anda yakin akan menyetujui pengajuan ini?
                   </div>
                   <div class="modal-footer" style="justify-content: center;">
-                    <button type="button" class="btn btn-secondary" style="background-color: #58dfa0;">Tidak</button>
-                    <button type="button" class="btn btn-primary" style="background-color: #58dfa0;">Ya</button>
+                    <button type="button" class="btn btn-primary">Tidak</button>
+                    <form action="{{url('status_aset/4/diterima')}}" method="post">
+                      @csrf
+                      {{method_field('PUT')}}
+                      <button type="submit" class="btn btn-primary">Ya</button>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -92,8 +97,12 @@
                     Apakah anda yakin akan menolak pengajuan ini?
                   </div>
                   <div class="modal-footer" style="justify-content: center;">
-                    <button type="button" class="btn btn-secondary" style="background-color: #58dfa0;">Tidak</button>
-                    <button type="button" class="btn btn-primary" style="background-color: #58dfa0;">Ya</button>
+                    <button type="button" class="btn btn-primary">Tidak</button>
+                    <form action="{{url('status_aset/4/ditolak')}}" method="post">
+                      @csrf
+                      {{method_field('PUT')}}
+                      <button type="submit" class="btn btn-primary">Ya</button>
+                    </form>
                   </div>
                 </div>
               </div>

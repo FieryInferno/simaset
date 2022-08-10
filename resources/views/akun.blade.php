@@ -6,14 +6,7 @@
         <img src="{{asset('images/' . auth()->user()->foto)}}" style="width: 15rem;" class="img-preview">
       </div>
       <div class="card" style="background-color: #58dfa0;box-shadow: 0 0 0;">
-        @if (session('success'))
-          <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        @endif
+        <x-alert-success/>
         <form action="{{url('akun/' . auth()->user()->id)}}" method="post" enctype="multipart/form-data">
           @csrf
           <div class="row d-flex justify-content-center">
