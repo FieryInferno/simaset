@@ -7,18 +7,18 @@
           <div class="col-lg-4">
             <select name="bulan" class="form-control select2bs4">
               <option></option>
-              <option value="januari">Januari</option>
-              <option value="februari">Februari</option>
-              <option value="maret">Maret</option>
-              <option value="april">April</option>
-              <option value="mei">Mei</option>
-              <option value="juni">Juni</option>
-              <option value="juli">Juli</option>
-              <option value="agustus">Agustus</option>
-              <option value="september">September</option>
-              <option value="oktober">Oktober</option>
-              <option value="november">November</option>
-              <option value="desember">Desember</option>
+              <option value="Januari">Januari</option>
+              <option value="Februari">Februari</option>
+              <option value="Maret">Maret</option>
+              <option value="April">April</option>
+              <option value="Mei">Mei</option>
+              <option value="Juni">Juni</option>
+              <option value="Juli">Juli</option>
+              <option value="Agustus">Agustus</option>
+              <option value="September">September</option>
+              <option value="Oktober">Oktober</option>
+              <option value="November">November</option>
+              <option value="Desember">Desember</option>
             </select>
           </div>
           <div class="col-lg-4">
@@ -46,12 +46,17 @@
             <th>Aksi</th>
           </thead>
           <tbody>
+            <?php
+              $tgl_awal = $tahun ? $tahun : date('Y') - 2;
+              $tgl_akhir = $tahun ? $tahun : date('Y');
+              $bulan = $bulan ? [$bulan] : ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+            ?>
             @for ($j = $tgl_awal; $j <= $tgl_akhir; $j++)
-              @foreach (['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'] as $angka => $kata)
-                @foreach (['Rencana pengadaan', 'Rencana maintenance', 'data'] as $berkas)
+              @foreach ($bulan as $angka => $kata)
+                @foreach (['Rencana pengadaan', 'Rencana maintenance', 'Data'] as $berkas)
                   <tr>
                     <td>{{$berkas}} aset {{$kata . ' ' . $j}}</td>
-                    <td><a href="#">Preview</a></td>
+                    <td><a href="{{url('berkas/download/' . $berkas . '/' . $kata . '/' . $j)}}">Preview</a></td>
                   </tr>
                 @endforeach
               @endforeach

@@ -31,4 +31,5 @@ Route::middleware('auth')->group(function () {
   Route::resource('pengadaan_aset', App\Http\Controllers\PengadaanController::class);
   Route::resource('maintenance_aset', App\Http\Controllers\MaintenanceController::class);
   Route::get('berkas', [App\Http\Controllers\BerkasController::class, 'index']);
+  Route::get('berkas/download/{berkas}/{bulan}/{tahun}', [App\Http\Controllers\BerkasController::class, 'download']);
 });
