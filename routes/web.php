@@ -33,4 +33,5 @@ Route::middleware('auth')->group(function () {
   Route::resource('maintenance_aset', App\Http\Controllers\MaintenanceController::class);
   Route::get('berkas', [App\Http\Controllers\BerkasController::class, 'index']);
   Route::get('berkas/download/{berkas}/{bulan}/{tahun}', [App\Http\Controllers\BerkasController::class, 'download']);
+  Route::get('detail_lokasi/{aset}', [App\Http\Controllers\AsetController::class, 'detailLokasi']);
 });

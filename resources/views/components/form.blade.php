@@ -51,9 +51,26 @@
                 onchange="previewImg()"
                 id="foto"
               >
-              <div class="text-center">
-                <img class="img-preview" width="100%" src="{{asset('images/' . $value['value'])}}")>
-              </div>
+              @if ($value['value'])
+                <div class="text-center">
+                  <img class="img-preview" width="100%" src="{{asset('images/' . $value['value'])}}")>
+                </div>
+              @endif
+              @break
+            @case('select')
+              <select
+                name="{{ $key }}"
+                class="form-control select2bs4"
+                onchange="{{ isset($value['onchange']) ? $value['onchange'] : '' }}"
+                id="{{ isset($value['id']) ? $value['id'] : '' }}"
+              >
+                @if (isset($value['data']))
+                  <option disabled selected></option>
+                  @foreach ($value['data'] as $valueData)
+                    <option value="{{ $valueData->id }}" <?= $value['value'] === $valueData->id ? 'selected' : ''; ?>>{{ isset($value['labelSelect']) ? $value['labelSelect']($valueData) : $valueData->nama }}</option>
+                  @endforeach
+                @endif
+              </select>
               @break
           @endswitch
         </div>

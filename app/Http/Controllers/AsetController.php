@@ -183,4 +183,14 @@ class AsetController extends Controller
 
     return redirect()->back()->with('success', 'Berhasil edit status aset.');
   }
+
+  public function detailLokasi(Aset $aset)
+  {
+    return view('detail_lokasi', [
+      'beranda' => false,
+      'title' => 'Edit Aset',
+      'active' => 'tambah_aset',
+      'lokasi' => $aset->lokasi,
+    ]);
+  }
 }

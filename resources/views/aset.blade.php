@@ -5,7 +5,7 @@
       @if ($klasifikasi)
         @if (auth()->user()->role !== 'wadek')
           <div class="row mb-1 d-flex justify-content-end">
-            <a href="{{url('aset/create')}}" class="btn btn-primary">Tambah</a>
+            <a href="{{url('aset/create')}}?klasifikasi={{ $_GET['klasifikasi'] }}" class="btn btn-primary">Tambah</a>
           </div>
         @endif
         <form action="" method="get">

@@ -281,6 +281,57 @@
     $("#table").DataTable({"order": []});
     $('.select2bs4').select2({theme: 'bootstrap4'});
   });
+
+  <?php
+    if (isset($lokasi)) { ?>
+      const canvas = document.getElementById('Canvas');
+      const context = canvas.getContext("2d");
+      const mapSprite = new Image();
+      const lokasi = '<?= $lokasi; ?>'.split("-");
+      mapSprite.src = `{{ url('images/') }}/${lokasi[0]}.png`;
+
+      var Marker = function () {
+        this.Sprite = new Image();
+        this.Sprite.src = "https://static.wixstatic.com/media/2cd43b_b2abd015f06144698f4cf35849c41651~mv2.png/v1/fill/w_320,h_375,q_90/2cd43b_b2abd015f06144698f4cf35849c41651~mv2.png"
+        this.Width = 24;
+        this.Height = 40;
+        this.XPos = 0;
+        this.YPos = 0;
+      }
+    
+      const Markers = new Array();
+    
+      const firstLoad = function () {
+        context.font = "15px Georgia";
+        context.textAlign = "center";
+      }
+    
+      firstLoad();
+    
+      const main = function () {
+        var location = new Marker();
+        location.XPos = lokasi[1];
+        location.YPos = lokasi[2];
+  
+        Markers.push(location);
+        draw();
+      };
+    
+      const draw = function () {
+        context.fillStyle = "#000";
+
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(mapSprite, 0, 0, 900, 700);
+
+        for (let i = 0; i < Markers.length; i++) {
+          const tempMarker = Markers[i];
+          context.drawImage(tempMarker.Sprite, tempMarker.XPos, tempMarker.YPos, tempMarker.Width, tempMarker.Height);
+        }
+      };
+      
+      setInterval(main, (1000 / 60));
+    <?php }
+  ?>
 </script>
 </body>
 </html>
