@@ -11,11 +11,12 @@ class AsetController extends Controller
   public function index(Request $request)
   {
     $aset = $request->query('aset');
+    $klasifikasi = $request->query('klasifikasi');
     
     if ($aset) {
-      $aset = Aset::where('nama', 'like', '%' . $aset . '%')->get();
+      $aset = Aset::where('nama', 'like', '%' . $aset . '%')->where('klasifikasi', '=', $klasifikasi)->get();
     } else {
-      $aset = Aset::where('tipe', '=', null)->get();
+      $aset = Aset::where('tipe', '=', null)->where('klasifikasi', '=', $klasifikasi)->get();
     }
 
     return view('aset', [
@@ -23,6 +24,7 @@ class AsetController extends Controller
       'title' => 'Daftar Aset',
       'aset' => $aset,
       'active' => 'daftar_aset',
+      'klasifikasi' => $klasifikasi,
     ]);
   }
 
@@ -41,8 +43,8 @@ class AsetController extends Controller
       'beranda' => false,
       'title' => 'Identifikasi Aset',
       'active' => 'identifikasi_aset',
-      'aset' => Aset::where('nama', '=', $request->nama)
-                      ->where('kode', '=', $request->kode)
+      'aset' => Aset::where('nama', 'like', '%' . $request->nama . '%')
+                      ->where('kode', 'like', '%' . $request->kode . '%')
                       ->first(),
     ]);
   }

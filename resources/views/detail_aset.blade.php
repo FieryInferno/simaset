@@ -109,7 +109,8 @@
             </div>
           </div>
         @endif
-      @else
+      @endif
+      @if (auth()->user()->role !== 'wadek')
         <div class="d-flex justify-content-center">
           <div class="mb-5">
             <a href="{{url('aset/' . $aset->id . '/edit')}}" class="btn btn-light mr-1">Edit</a>
