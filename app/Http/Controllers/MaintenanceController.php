@@ -48,6 +48,9 @@ class MaintenanceController extends Controller
     $aset->tipe = 'maintenance';
     $aset->status = 'menunggu_diterima';
     $aset->gambar = $file->getClientOriginalName();
+    $aset->perkiraan_biaya = $request->perkiraan_biaya;
+    $aset->kondisi = $request->kondisi;
+    $aset->proses = $request->proses;
 
     $aset->save();
 
@@ -87,6 +90,9 @@ class MaintenanceController extends Controller
     $aset->tanggal = $request->tanggal;
     $aset->jumlah = $request->jumlah;
     $aset->lokasi = $request->lokasi;
+    $aset->perkiraan_biaya = $request->perkiraan_biaya;
+    $aset->kondisi = $request->kondisi;
+    $aset->proses = $request->proses;
 
     $aset->save();
 

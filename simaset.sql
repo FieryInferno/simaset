@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 11, 2022 at 01:23 AM
+-- Generation Time: Aug 29, 2022 at 06:39 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -37,7 +37,12 @@ CREATE TABLE `aset` (
   `gambar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tanggal` date DEFAULT NULL,
   `keterangan` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `klasifikasi` enum('sekretariat','akademik','kemahasiswaan','keuangan','laboratorium') COLLATE utf8mb4_unicode_ci NOT NULL,
   `tipe` enum('pengadaan','maintenance') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `perkiraan_biaya` int(11) DEFAULT NULL,
+  `kondisi` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `proses` enum('Perawatan','Perbaikan') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status_kaur` enum('diterima','ditolak') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` enum('menunggu_diterima','ditolak','diterima') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -47,13 +52,15 @@ CREATE TABLE `aset` (
 -- Dumping data for table `aset`
 --
 
-INSERT INTO `aset` (`id`, `nama`, `spesifikasi`, `kode`, `lokasi`, `jumlah`, `gambar`, `tanggal`, `keterangan`, `tipe`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Seagate 27 edit', 'kecepatan transfer data yang tinggi dengan antarmuka USB 3.0 dengan menyambungkan ke port USB 3.0 SuperSpeed. USB 3.0 juga kompatibel dengan USB 2.0 untuk kompatibilitas sistem tambahan edit', 'Harddisk edit', 'lab 1 edit', '1', 'Capture.PNG', NULL, NULL, NULL, NULL, '2022-08-08 18:50:16', '2022-08-08 19:37:57'),
-(3, 'Epson DS-410', 'Take your business productivity and effi ciency to the next level with Epson WorkForce DS-410 scanner. Featuring a built-in Automatic Document Feeder, this compact scanner can easily scan stacks of business cards and documents of up to A3 size.', 'Printer', 'lab 1', '1', 'printer.jpg', NULL, NULL, NULL, NULL, '2022-08-08 18:50:16', '2022-08-08 18:50:16'),
-(4, 'Logitech', NULL, NULL, NULL, '1', 'printer.jpg', '2021-05-17', 'keterangan', 'pengadaan', 'diterima', '2022-08-08 18:50:16', '2022-08-10 16:04:21'),
-(5, 'HP', NULL, 'PC', 'Lab 1', '1', 'printer.jpg', '2022-08-08', NULL, 'maintenance', 'menunggu_diterima', '2022-08-08 18:50:16', '2022-08-08 18:50:16'),
-(6, 'test', 'test', 'test', 'test', '1', 'Hasil Typing Test.PNG', '0000-00-00', NULL, NULL, NULL, '2022-08-08 18:50:16', '2022-08-08 18:50:16'),
-(8, 'test', NULL, NULL, NULL, '1', '1.PNG', '2022-07-31', 'test', 'pengadaan', 'menunggu_diterima', '2022-08-08 21:35:36', '2022-08-08 21:50:42');
+INSERT INTO `aset` (`id`, `nama`, `spesifikasi`, `kode`, `lokasi`, `jumlah`, `gambar`, `tanggal`, `keterangan`, `klasifikasi`, `tipe`, `perkiraan_biaya`, `kondisi`, `proses`, `status_kaur`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'Seagate 27 edit', 'kecepatan transfer data yang tinggi dengan antarmuka USB 3.0 dengan menyambungkan ke port USB 3.0 SuperSpeed. USB 3.0 juga kompatibel dengan USB 2.0 untuk kompatibilitas sistem tambahan edit', 'Harddisk edit', 'lantai1-338.5-146.43333435058594', '1', 'Capture.PNG', NULL, NULL, 'sekretariat', NULL, NULL, NULL, NULL, NULL, NULL, '2022-08-08 18:50:16', '2022-08-08 19:37:57'),
+(3, 'Epson DS-410', 'Take your business productivity and effi ciency to the next level with Epson WorkForce DS-410 scanner. Featuring a built-in Automatic Document Feeder, this compact scanner can easily scan stacks of business cards and documents of up to A3 size.', 'Printer', 'lantai7-382.5-194.43333435058594', '1', 'printer.jpg', NULL, NULL, 'sekretariat', NULL, NULL, NULL, NULL, NULL, NULL, '2022-08-08 18:50:16', '2022-08-08 18:50:16'),
+(4, 'Logitech', NULL, NULL, NULL, '1', 'printer.jpg', '2021-05-17', 'keterangan', 'sekretariat', 'pengadaan', NULL, NULL, NULL, NULL, 'diterima', '2022-08-08 18:50:16', '2022-08-28 21:24:00'),
+(5, 'HP', NULL, 'PC', 'lantai9-221.5-111.43333435058594', '1', 'printer.jpg', '2022-08-08', NULL, 'sekretariat', 'maintenance', 90000, 'kondisi', 'Perbaikan', 'diterima', 'diterima', '2022-08-08 18:50:16', '2022-08-28 21:38:51'),
+(6, 'test', 'test', 'test', 'lantai5-312.5-205.43333435058594', '1', 'Hasil Typing Test.PNG', '0000-00-00', NULL, 'sekretariat', NULL, NULL, NULL, NULL, NULL, NULL, '2022-08-08 18:50:16', '2022-08-08 18:50:16'),
+(8, 'test', NULL, NULL, NULL, '1', '1.PNG', '2022-07-31', 'test', 'sekretariat', 'pengadaan', NULL, NULL, NULL, NULL, 'menunggu_diterima', '2022-08-08 21:35:36', '2022-08-08 21:50:42'),
+(11, 'Aset laboratorium', 'spesifikasi', '001923', 'lantai7-382.5-194.43333435058594', '3', 'env.PNG', NULL, NULL, 'laboratorium', NULL, NULL, NULL, NULL, NULL, NULL, '2022-08-28 19:32:14', '2022-08-28 19:32:14'),
+(12, 'Pengajuan maintenance aset', NULL, 'pma', 'lantai8-215.5-120.43333435058594', '1', '1.PNG', '2022-08-29', NULL, 'sekretariat', 'maintenance', 1000000, 'kondisi', 'Perawatan', NULL, 'menunggu_diterima', '2022-08-28 20:44:54', '2022-08-28 20:44:54');
 
 -- --------------------------------------------------------
 
@@ -205,7 +212,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `aset`
 --
 ALTER TABLE `aset`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`

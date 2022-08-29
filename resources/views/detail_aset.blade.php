@@ -117,14 +117,14 @@
                       Lantai 9 Kelas
                       @break
                   @endswitch
-                      <a href="{{ url('detail_lokasi/' . $aset->id) }}" class="btn btn-light">Detail Lokasi</a></td>
+                  <a href="{{ url('detail_lokasi/' . $aset->id) }}" class="btn btn-light">Detail Lokasi</a></td>
               </tr>
             @endif
           </tbody>
         </table>
       </div>
-      @if (auth()->user()->role === 'wadek' && $aset->tipe)
-        @if ($aset->status !== 'menunggu_diterima')
+      @if ((auth()->user()->role === 'wadek' || auth()->user()->role === 'staff' || auth()->user()->role === 'kaur') && $aset->tipe)
+        @if ($aset->status === 'menunggu_diterima')
           <div class="d-flex justify-content-center">
             <button
               type="button"
@@ -142,7 +142,7 @@
                   </div>
                   <div class="modal-footer" style="justify-content: center;">
                     <button type="button" class="btn btn-primary">Tidak</button>
-                    <form action="{{url('status_aset/4/diterima')}}" method="post">
+                    <form action="{{url('status_aset/' . $aset->id . '/diterima')}}" method="post">
                       @csrf
                       {{method_field('PUT')}}
                       <button type="submit" class="btn btn-primary">Ya</button>
@@ -167,7 +167,7 @@
                   </div>
                   <div class="modal-footer" style="justify-content: center;">
                     <button type="button" class="btn btn-primary">Tidak</button>
-                    <form action="{{url('status_aset/4/ditolak')}}" method="post">
+                    <form action="{{url('status_aset/' . $aset->id . '/ditolak')}}" method="post">
                       @csrf
                       {{method_field('PUT')}}
                       <button type="submit" class="btn btn-primary">Ya</button>
@@ -179,7 +179,7 @@
           </div>
         @endif
       @endif
-      @if (auth()->user()->role !== 'wadek')
+      @if (auth()->user()->role !== 'wadek' && auth()->user()->role !== 'kaur' && auth()->user()->role !== 'staff')
         <div class="d-flex justify-content-center">
           <div class="mb-5">
             <a href="{{url('aset/' . $aset->id . '/edit')}}" class="btn btn-light mr-1">Edit</a>

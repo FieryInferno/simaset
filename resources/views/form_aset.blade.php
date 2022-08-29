@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <?php
         $form = [
-          'action' => isset($aset) ? url('aset/' . $aset->id) : url('aset'),
+          'action' => isset($aset) ? url('aset/' . $aset->id . '?klasifikasi=' . $_GET['klasifikasi']) : url('aset?klasifikasi=' . $_GET['klasifikasi']),
           'fields' => [
             'nama' => [
               'label' => 'Nama Aset',
@@ -44,16 +44,16 @@
                   'nama' => 'Lantai 2 Ruang Tata Usaha FIF',
                 ],
                 (object) [
-                  'id' => 'lantai1-330.5-490.43333435058594',
-                  'nama' => 'Lantai 1 Ruang Kegiatan Mahasiswa FRI',
+                  'id' => 'lantai2-330.5-490.43333435058594',
+                  'nama' => 'Lantai 2 Ruang Kegiatan Mahasiswa FRI',
                 ],
                 (object) [
-                  'id' => 'lantai1-547.5-489.43333435058594',
-                  'nama' => 'Lantai 1 Ruang Kegiatan Mahasiswa FTE',
+                  'id' => 'lantai2-547.5-489.43333435058594',
+                  'nama' => 'Lantai 2 Ruang Kegiatan Mahasiswa FTE',
                 ],
                 (object) [
-                  'id' => 'lantai1-604.5-452.43333435058594',
-                  'nama' => 'Lantai 1 Ruang Kegiatan Mahasiswa FIF',
+                  'id' => 'lantai2-604.5-452.43333435058594',
+                  'nama' => 'Lantai 2 Ruang Kegiatan Mahasiswa FIF',
                 ],
                 (object) [
                   'id' => 'lantai3-392.5-178.43333435058594',

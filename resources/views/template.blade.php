@@ -92,7 +92,7 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a href="{{url('maintenance_aset')}}" class="nav-link {{$active === 'maintenance_aset' ? 'active' : ''}}">
+                      <a href="{{ auth()->user()->role === 'staff' || auth()->user()->role === 'kaur' ? url('status_aset?status=diperbaiki') : url('maintenance_aset') }}" class="nav-link {{$active === 'maintenance_aset' ? 'active' : ''}}">
                         <p>Pengajuan Maintenance Aset</p>
                       </a>
                     </li>

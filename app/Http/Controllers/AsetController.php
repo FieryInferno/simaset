@@ -69,7 +69,7 @@ class AsetController extends Controller
         $aset = Aset::where('tipe', '=', 'pengadaan')->get();
         break;
       case 'diperbaiki':
-        $aset = Aset::where('tipe', '=', 'maintenance')->get();
+        $aset = Aset::where('tipe', '=', 'maintenance')->where('status_kaur', '=', auth()->user()->role !== 'wadek' ? null : 'diterima')->get();
         break;
       
       default:
@@ -125,6 +125,7 @@ class AsetController extends Controller
     $aset->lokasi = $request->lokasi;
     $aset->jumlah = $request->jumlah;
     $aset->gambar = $file->getClientOriginalName();
+    $aset->klasifikasi = $request->query('klasifikasi');
 
     $aset->save();
 
@@ -177,7 +178,11 @@ class AsetController extends Controller
 
   public function updateStatusAset(Aset $aset, $status)
   {
-    $aset->status = $status;
+    if (auth()->user()->role === 'wadek') {
+      $aset->status = $status;
+    } else {
+      $aset->status_kaur = $status;
+    }
 
     $aset->save();
 
@@ -188,8 +193,8 @@ class AsetController extends Controller
   {
     return view('detail_lokasi', [
       'beranda' => false,
-      'title' => 'Edit Aset',
-      'active' => 'tambah_aset',
+      'title' => 'Lokasi Aset',
+      'active' => 'lokasi_aset',
       'lokasi' => $aset->lokasi,
     ]);
   }
