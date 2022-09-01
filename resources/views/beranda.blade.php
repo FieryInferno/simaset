@@ -23,7 +23,7 @@
                 <div class="card-body text-center"><h1>{{$maintenance}}</h1></div>
               </div>
               <div class="card">
-                <div class="card-header">Aset yang diperbaiki</div>
+                <div class="card-header">Proses Maintenance Aset</div>
                 <div class="card-body text-center"><h1>{{$aset_diperbaiki}}</h1></div>
               </div>
             </div>

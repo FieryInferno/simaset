@@ -22,38 +22,33 @@
               'value' => isset($aset) ? $aset->kode : null
             ],
             'lokasi' => [
-              'label' => 'Lokasi Aset',
-              'type' => 'input',
-              'value' => isset($aset) ? $aset->lokasi : null
-            ],
-            'lokasi' => [
               'label' => 'Lokasi',
               'type' => 'select',
               'value' => isset($aset) ? $aset->lokasi : null,
               'data' => [
                 (object) [
-                  'id' => 'lantai2-338.5-146.43333435058594',
-                  'nama' => 'Lantai 2 Ruang Tata Usaha FRI',
+                  'id' => 'lantai1-338.5-146.43333435058594',
+                  'nama' => 'Lantai 1 Ruang Tata Usaha FRI',
                 ],
                 (object) [
-                  'id' => 'lantai2-440.5-138.43333435058594',
-                  'nama' => 'Lantai 2 Ruang Tata Usaha FTE',
+                  'id' => 'lantai1-440.5-138.43333435058594',
+                  'nama' => 'Lantai 1 Ruang Tata Usaha FTE',
                 ],
                 (object) [
-                  'id' => 'lantai2-535.5-149.43333435058594',
-                  'nama' => 'Lantai 2 Ruang Tata Usaha FIF',
+                  'id' => 'lantai1-535.5-149.43333435058594',
+                  'nama' => 'Lantai 1 Ruang Tata Usaha FIF',
                 ],
                 (object) [
-                  'id' => 'lantai2-330.5-490.43333435058594',
-                  'nama' => 'Lantai 2 Ruang Kegiatan Mahasiswa FRI',
+                  'id' => 'lantai1-330.5-490.43333435058594',
+                  'nama' => 'Lantai 1 Ruang Kegiatan Mahasiswa FRI',
                 ],
                 (object) [
-                  'id' => 'lantai2-547.5-489.43333435058594',
-                  'nama' => 'Lantai 2 Ruang Kegiatan Mahasiswa FTE',
+                  'id' => 'lantai1-547.5-489.43333435058594',
+                  'nama' => 'Lantai 1 Ruang Kegiatan Mahasiswa FTE',
                 ],
                 (object) [
-                  'id' => 'lantai2-604.5-452.43333435058594',
-                  'nama' => 'Lantai 2 Ruang Kegiatan Mahasiswa FIF',
+                  'id' => 'lantai1-604.5-452.43333435058594',
+                  'nama' => 'Lantai 1 Ruang Kegiatan Mahasiswa FIF',
                 ],
                 (object) [
                   'id' => 'lantai3-392.5-178.43333435058594',

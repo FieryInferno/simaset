@@ -67,6 +67,6 @@ class BerkasController extends Controller
       'tahun' => $tahun,
     ]);
     
-    return $pdf->stream('rekap');
+    return $pdf->stream('rekap.pdf');
   }
 }

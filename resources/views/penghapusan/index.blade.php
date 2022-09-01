@@ -3,7 +3,7 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row mb-1 d-flex justify-content-end">
-        <a href="{{url('maintenance_aset/create')}}" class="btn btn-primary">Tambah</a>
+        <a href="{{url('penghapusan_aset/create')}}" class="btn btn-primary">Tambah</a>
       </div>
       <x-alert-success/>
       <?php
@@ -84,34 +84,17 @@
             <a href="{{ url('detail_lokasi/' . $data->id) }}" class="btn btn-light">Detail Lokasi</a></td>
           <?php
           }],
-          'Perkiraan Biaya' => 'perkiraan_biaya',
-          'Kondisi' => 'kondisi',
-          'Proses' => 'proses',
-          'Status' => ['render' => function ($data) {
-            switch ($data->status) {
-              case 'menunggu_diterima':
-                return 'Menunggu diterima';
-                break;
-              case 'ditolak':
-                return 'Ditolak';
-                break;
-              
-              default:
-                # code...
-                break;
-            }
-          }],
           'Aksi' => ['render' => function ($data) { ?>
-            <a href="{{url('maintenance_aset/' . $data->id . '/edit')}}" class="btn btn-light">Edit</a>
+            <a href="{{url('penghapusan_aset/' . $data->id . '/edit')}}" class="btn btn-light">Edit</a>
             <button
               type="button"
               class="btn btn-light"
               data-toggle="modal"
-              data-target="#hapus"
+              data-target="#hapus{{ $data->id }}"
             >
               Hapus
             </button>
-            <div class="modal fade" id="hapus" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="hapus{{ $data->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -125,7 +108,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #58dfa0;">Close</button>
-                    <form action="{{url('maintenance_aset/' . $data->id)}}" method="post">
+                    <form action="{{url('penghapusan_aset/' . $data->id)}}" method="post">
                       @csrf
                       {{method_field('DELETE')}}
                       <button type="submit" class="btn btn-danger">Hapus</button>

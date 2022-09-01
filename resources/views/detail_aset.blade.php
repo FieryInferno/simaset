@@ -50,23 +50,23 @@
                 <th scope="row">Lokasi</th>
                 <td>
                   @switch($aset->lokasi)
-                    @case('lantai2-338.5-146.43333435058594')
-                      Lantai 2 Ruang Tata Usaha FRI
+                    @case('lantai1-338.5-146.43333435058594')
+                      Lantai 1 Ruang Tata Usaha FRI
                       @break
-                    @case('lantai2-440.5-138.43333435058594')
-                      Lantai 2 Ruang Tata Usaha FTE
+                    @case('lantai1-440.5-138.43333435058594')
+                      Lantai 1 Ruang Tata Usaha FTE
                       @break
-                    @case('lantai2-535.5-149.43333435058594')
-                      Lantai 2 Ruang Tata Usaha FIF
+                    @case('lantai1-535.5-149.43333435058594')
+                      Lantai 1 Ruang Tata Usaha FIF
                       @break
-                    @case('lantai2-330.5-490.43333435058594')
-                      Lantai 2 Ruang Kegiatan Mahasiswa FRI
+                    @case('lantai1-330.5-490.43333435058594')
+                      Lantai 1 Ruang Kegiatan Mahasiswa FRI
                       @break
-                    @case('lantai2-547.5-489.43333435058594')
-                      Lantai 2 Ruang Kegiatan Mahasiswa FTE
+                    @case('lantai1-547.5-489.43333435058594')
+                      Lantai 1 Ruang Kegiatan Mahasiswa FTE
                       @break
-                    @case('lantai2-604.5-452.43333435058594')
-                      Lantai 2 Ruang Kegiatan Mahasiswa FIF
+                    @case('lantai1-604.5-452.43333435058594')
+                      Lantai 1 Ruang Kegiatan Mahasiswa FIF
                       @break
                     @case('lantai3-392.5-178.43333435058594')
                       Lantai 3 Ruang Kegiatan Dosen
@@ -179,13 +179,15 @@
           </div>
         @endif
       @endif
-      @if (auth()->user()->role !== 'wadek' && auth()->user()->role !== 'kaur' && auth()->user()->role !== 'staff')
-        <div class="d-flex justify-content-center">
-          <div class="mb-5">
-            <a href="{{url('aset/' . $aset->id . '/edit')}}" class="btn btn-light mr-1">Edit</a>
-            <x-button-modal url="{{url('aset/' . $aset->id)}}"/>
+      @if (auth()->user()->role !== 'wadek')
+        @if (!$aset->tipe)
+          <div class="d-flex justify-content-center">
+            <div class="mb-5">
+              <a href="{{ url('aset/' . $aset->id . '/edit?klasifikasi=' . $aset->klasifikasi) }}" class="btn btn-light mr-1">Edit</a>
+              <x-button-modal url="{{url('aset/' . $aset->id)}}"/>
+            </div>
           </div>
-        </div>
+        @endif
       @endif
     </div><!-- /.container-fluid -->
   </div>

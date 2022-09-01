@@ -46,7 +46,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{{ url('beranda') }}" class="brand-link">
       <img src="{{asset('images')}}/rekayasa-industri.png" style="width: 100%;">
     </a>
 
@@ -96,6 +96,20 @@
                         <p>Pengajuan Maintenance Aset</p>
                       </a>
                     </li>
+                    @if (auth()->user()->role === 'staff' || auth()->user()->role === 'kaur')
+                      <li class="nav-item">
+                        <a href="{{ url('penghapusan_aset') }}" class="nav-link {{ $active === 'penghapusan_aset' ? 'active' : '' }}">
+                          <p>Penghapusan Aset</p>
+                        </a>
+                      </li>
+                    @endif
+                    @if (auth()->user()->role === 'laboran' || auth()->user()->role === 'kaur_lab')
+                      <li class="nav-item">
+                        <a href="{{ url('peminjaman_aset') }}" class="nav-link {{ $active === 'peminjaman_aset' ? 'active' : '' }}">
+                          <p>Peminjaman Aset</p>
+                        </a>
+                      </li>
+                    @endif
                   </ul>
                 </li>
               @endif

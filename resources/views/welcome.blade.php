@@ -32,6 +32,15 @@
 
               <form action="{{url('login')}}" method="post">
                 @csrf
+                @if ($errors->any())
+                  <div class="alert alert-danger">
+                    <ul>
+                      @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                      @endforeach
+                    </ul>
+                  </div>
+                @endif
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label">Email address</label>
                   <input
@@ -54,6 +63,11 @@
                 <div class="row justify-content-center">
                   <div class="col-4">
                     <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div class="col-5 text-center">
+                    <a href="{{ url('lupa_password') }}">Lupa Password</a>
                   </div>
                 </div>
               </form>

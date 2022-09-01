@@ -12,10 +12,10 @@
                 </div>
               </div>
             </div>
-            <div class="col-5">
+            <div class="col-6">
               <div class="card">
                 <div class="card-body">
-                  <a href="{{url('status_aset?status=diperbaiki')}}"><h1>Aset Diperbaiki</h1></a>
+                  <a href="{{url('status_aset?status=diperbaiki')}}"><h1>Maintenance Aset</h1></a>
                 </div>
               </div>
             </div>
@@ -26,7 +26,7 @@
           <div class="col-lg-3">
             <div class="card">
               <div class="card-body text-center">
-                <h3>Aset {{$status}}</h3>
+                <h3>{{ $status === 'diperbaiki' ? 'Maintenance Aset' : 'Aset ' . $status }}</h3>
               </div>
             </div>
           </div>

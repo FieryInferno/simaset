@@ -8,23 +8,6 @@
             <a href="{{url('aset/create')}}?klasifikasi={{ $_GET['klasifikasi'] }}" class="btn btn-primary">Tambah</a>
           </div>
         @endif
-        <form action="" method="get">
-          <div class="row mb-2">
-              <div class="col-lg-11">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="aset"
-                  placeholder="Cari aset"
-                >
-              </div>
-              <div class="col-lg-1">
-                <button class="btn btn-primary" type="submit">
-                  <i class="fas fa-search nav-icon"></i>
-                </button>
-              </div>
-          </div>
-        </form>
         <x-alert-success/>
         <x-list-aset :aset=$aset/>
       @else

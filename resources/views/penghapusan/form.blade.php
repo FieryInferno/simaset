@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <?php
         $form = [
-          'action' => isset($aset) ? url('maintenance_aset/' . $aset->id) : url('maintenance_aset'),
+          'action' => isset($aset) ? url('penghapusan_aset/' . $aset->id) : url('penghapusan_aset'),
           'fields' => [
             'tanggal' => [
               'label' => 'Tanggal',
@@ -120,36 +120,6 @@
                   'nama' => 'Lantai 9 Kelas',
                 ],
               ],
-            ],
-            'perkiraan_biaya' => [
-              'label' => 'Perkiraan Biaya',
-              'type' => 'input',
-              'value' => isset($aset) ? $aset->perkiraan_biaya : null
-            ],
-            'kondisi' => [
-              'label' => 'kondisi',
-              'type' => 'input',
-              'value' => isset($aset) ? $aset->kondisi : null
-            ],
-            'proses' => [
-              'label' => 'Proses',
-              'type' => 'select',
-              'value' => isset($aset) ? $aset->proses : null,
-              'data' => [
-                (object) [
-                  'id' => 'Perawatan',
-                  'nama' => 'Perawatan',
-                ],
-                (object) [
-                  'id' => 'Perbaikan',
-                  'nama' => 'Perbaikan',
-                ],
-              ],
-            ],
-            'gambar' => [
-              'label' => 'Gambar',
-              'type' => 'file',
-              'value' => isset($aset) ? $aset->gambar : null,
             ],
           ],
           'buttonText' => 'Simpan',
