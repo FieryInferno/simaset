@@ -4,16 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Aset;
+use Illuminate\Support\Facades\DB;
 
 class PengadaanController extends Controller
 {
-  public function index()
+  public function index(Request $request)
   {
+    $pengadaan = Aset::select('*', DB::raw('YEAR(tanggal) tahun'), DB::raw('MONTH(tanggal) bulan'), DB::raw('DAY(tanggal) hari'))->where('tipe', '=', 'pengadaan')->get();
+
+    if ($request->query('filter')) {
+      $pengadaan = $pengadaan->sortBy($request->query('filter'));
+    }
+
     return view('pengadaan', [
       'beranda' => false,
       'title' => 'Daftar Pengajuan Pengadaan Aset',
       'active' => 'pengadaan_aset',
-      'data' => Aset::where('tipe', '=', 'pengadaan')->get(),
+      'data' => $pengadaan,
     ]);
   }
 
@@ -34,12 +41,14 @@ class PengadaanController extends Controller
       'keterangan' => 'required',
       'jumlah' => 'required',
       'foto' => 'required',
+      'unit' => 'required',
     ]);
 
     $file = $request->file('foto');
     $file->move('images', $file->getClientOriginalName());
     $aset = new Aset;
     $aset->nama = $request->nama;
+    $aset->unit = $request->unit;
     $aset->keterangan = $request->keterangan;
     $aset->tanggal = $request->tanggal;
     $aset->kode = $request->kode;
@@ -70,6 +79,7 @@ class PengadaanController extends Controller
       'tanggal' => 'required',
       'keterangan' => 'required',
       'jumlah' => 'required',
+      'unit' => 'required',
     ]);
 
     $aset = Aset::find($id);
@@ -81,6 +91,7 @@ class PengadaanController extends Controller
     }
     
     $aset->nama = $request->nama;
+    $aset->unit = $request->unit;
     $aset->keterangan = $request->keterangan;
     $aset->tanggal = $request->tanggal;
     $aset->kode = $request->kode;

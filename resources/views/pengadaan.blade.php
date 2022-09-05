@@ -2,6 +2,18 @@
 @section('content')
   <div class="content">
     <div class="container-fluid">
+      <div class="row mb-1 d-flex justify-content-start">
+        Urutkan daftar berdasarkan:
+        <form action="" method="get">
+          <select name="filter" id="">
+            <option selected disabled></option>
+            <option value="hari">Hari</option>
+            <option value="bulan">Bulan</option>
+            <option value="tahun">Tahun</option>
+          </select>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
       <div class="row mb-1 d-flex justify-content-end">
         <a href="{{url('pengadaan_aset/create')}}" class="btn btn-primary">Tambah</a>
       </div>
@@ -9,6 +21,7 @@
       <?php
         $columns = [
           'Tanggal' => 'tanggal',
+          'Unit' => 'unit',
           'Nama Aset' => 'nama',
           'Keterangan' => 'keterangan',
           'Jumlah' => 'jumlah',

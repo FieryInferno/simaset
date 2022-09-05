@@ -37,10 +37,12 @@ class PeminjamanController extends Controller
       'aset_id' => 'required',
       'tanggal' => 'required',
       'waktu' => 'required',
+      'unit' => 'required',
     ]);
 
     $aset = new Peminjaman;
     $aset->nama = $request->nama;
+    $aset->unit = $request->unit;
     $aset->nim = $request->nim;
     $aset->email = $request->email;
     $aset->aset_id = $request->aset_id;

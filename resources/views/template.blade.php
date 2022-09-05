@@ -103,13 +103,11 @@
                         </a>
                       </li>
                     @endif
-                    @if (auth()->user()->role === 'laboran' || auth()->user()->role === 'kaur_lab')
-                      <li class="nav-item">
-                        <a href="{{ url('peminjaman_aset') }}" class="nav-link {{ $active === 'peminjaman_aset' ? 'active' : '' }}">
-                          <p>Peminjaman Aset</p>
-                        </a>
-                      </li>
-                    @endif
+                    <li class="nav-item">
+                      <a href="{{ url('peminjaman_aset') }}" class="nav-link {{ $active === 'peminjaman_aset' ? 'active' : '' }}">
+                        <p>Peminjaman Aset</p>
+                      </a>
+                    </li>
                   </ul>
                 </li>
               @endif

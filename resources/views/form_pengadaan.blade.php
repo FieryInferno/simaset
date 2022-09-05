@@ -16,6 +16,11 @@
               'type' => 'input',
               'value' => isset($aset) ? $aset->nama : null,
             ],
+            'unit' => [
+              'label' => 'Unit',
+              'type' => 'input',
+              'value' => isset($aset) ? $aset->unit : null,
+            ],
             'keterangan' => [
               'label' => 'Keterangan',
               'type' => 'textarea',

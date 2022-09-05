@@ -9,6 +9,7 @@
       <?php
         $columns = [
           'Nama Peminjam' => 'nama',
+          'Unit' => 'unit',
           'NIM/NIP' => 'nim',
           'Email' => 'email',
           'Nama Aset' => ['render' => function ($data) {

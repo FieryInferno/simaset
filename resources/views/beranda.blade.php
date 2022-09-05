@@ -2,35 +2,88 @@
 @section('content')
   <div class="content">
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-3"></div>
-        <div class="col-lg-6">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="card">
-                <div class="card-header">Pengajuan Penambahan Aset</div>
-                <div class="card-body text-center"><h1>{{$pengadaan}}</h1></div>
-              </div>
-              <div class="card">
-                <div class="card-header">Aset Masuk</div>
-                <div class="card-body text-center"><h1>{{$aset_masuk}}</h1></div>
-              </div>
+      <?php
+        function tgl_indo($tanggal){
+          $bulan = array (
+            1 =>   'Januari',
+            'Februari',
+            'Maret',
+            'April',
+            'Mei',
+            'Juni',
+            'Juli',
+            'Agustus',
+            'September',
+            'Oktober',
+            'November',
+            'Desember'
+          );
+          $pecahkan = explode('-', $tanggal);
+          return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+        }
+      ?>
+      <div class="card">
+        <div class="card-header">Pengadaan <i class="fas fa-bell"></i></div>
+        <div class="card-body overflow-auto" style="max-height: 12rem;">
+          @foreach ($pengadaan as $p)
+            <div>
+              Pengajuan pengadaan aset {{ tgl_indo($p->tanggal) }} sudah
+              @switch ($p->status)
+                @case ('menunggu_diterima')
+                  diajukan. Menunggu persetujuan.
+                  @break
+                @case ('diterima')
+                  disetujui.
+                  @break
+                @case ('ditolak')
+                  ditolak.
+                  @break
+              @endswitch
             </div>
-            <!-- /.col-md-6 -->
-            <div class="col-lg-6">
-              <div class="card">
-                <div class="card-header">Pengajuan Maintenance Aset</div>
-                <div class="card-body text-center"><h1>{{$maintenance}}</h1></div>
-              </div>
-              <div class="card">
-                <div class="card-header">Proses Maintenance Aset</div>
-                <div class="card-body text-center"><h1>{{$aset_diperbaiki}}</h1></div>
-              </div>
-            </div>
-          </div>
+          @endforeach
         </div>
-        <div class="col-lg-3"></div>
-        <!-- /.col-md-6 -->
+      </div>
+      <div class="card">
+        <div class="card-header">Maintenance <i class="fas fa-bell"></i></div>
+        <div class="card-body overflow-auto" style="max-height: 12rem;">
+          @foreach ($maintenance as $p)
+            <div>
+              Pengajuan pengadaan aset {{ tgl_indo($p->tanggal) }} sudah
+              @switch ($p->status)
+                @case ('menunggu_diterima')
+                  diajukan. Menunggu persetujuan.
+                  @break
+                @case ('diterima')
+                  disetujui.
+                  @break
+                @case ('ditolak')
+                  ditolak.
+                  @break
+              @endswitch
+            </div>
+          @endforeach
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">Peminjaman <i class="fas fa-bell"></i></div>
+        <div class="card-body overflow-auto" style="max-height: 12rem;">
+          @foreach ($peminjaman as $p)
+            <div>
+              Pengajuan pengadaan aset {{ tgl_indo($p->tanggal) }} sudah
+              @switch ($p->status)
+                @case ('menunggu_diterima')
+                  diajukan. Menunggu persetujuan.
+                  @break
+                @case ('diterima')
+                  disetujui.
+                  @break
+                @case ('ditolak')
+                  ditolak.
+                  @break
+              @endswitch
+            </div>
+          @endforeach
+        </div>
       </div>
       <!-- /.row -->
     </div><!-- /.container-fluid -->

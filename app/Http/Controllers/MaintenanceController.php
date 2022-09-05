@@ -4,16 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Aset;
+use Illuminate\Support\Facades\DB;
 
 class MaintenanceController extends Controller
 {
-  public function index()
+  public function index(Request $request)
   {
+    $maintenance = Aset::select('*', DB::raw('YEAR(tanggal) tahun'), DB::raw('MONTH(tanggal) bulan'), DB::raw('DAY(tanggal) hari'))->where('tipe', '=', 'maintenance')->get();
+
+    if ($request->query('filter')) {
+      $maintenance = $maintenance->sortBy($request->query('filter'));
+    }
+
     return view('maintenance', [
       'beranda' => false,
       'title' => 'Daftar Pengajuan maintenance Aset',
       'active' => 'maintenance_aset',
-      'data' => Aset::where('tipe', '=', 'maintenance')->get(),
+      'data' => $maintenance,
     ]);
   }
 
@@ -35,12 +42,14 @@ class MaintenanceController extends Controller
       'jumlah' => 'required',
       'lokasi' => 'required',
       'foto' => 'required',
+      'unit' => 'required',
     ]);
 
     $file = $request->file('foto');
     $file->move('images', $file->getClientOriginalName());
     $aset = new Aset;
     $aset->nama = $request->nama;
+    $aset->unit = $request->unit;
     $aset->kode = $request->kode;
     $aset->tanggal = $request->tanggal;
     $aset->jumlah = $request->jumlah;
@@ -75,6 +84,7 @@ class MaintenanceController extends Controller
       'kode' => 'required',
       'jumlah' => 'required',
       'lokasi' => 'required',
+      'unit' => 'required',
     ]);
     
     $aset = Aset::find($id);
@@ -86,6 +96,7 @@ class MaintenanceController extends Controller
     }
     
     $aset->nama = $request->nama;
+    $aset->unit = $request->unit;
     $aset->kode = $request->kode;
     $aset->tanggal = $request->tanggal;
     $aset->jumlah = $request->jumlah;

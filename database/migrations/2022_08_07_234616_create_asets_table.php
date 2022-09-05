@@ -11,6 +11,7 @@ return new class extends Migration
     Schema::create('aset', function (Blueprint $table) {
       $table->id();
       $table->string('nama');
+      $table->string('unit');
       $table->string('spesifikasi')->nullable();
       $table->string('kode')->nullable();
       $table->string('lokasi')->nullable();

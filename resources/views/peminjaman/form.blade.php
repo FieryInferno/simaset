@@ -11,6 +11,11 @@
               'type' => 'input',
               'value' => isset($peminjaman) ? $peminjaman->nama : null,
             ],
+            'unit' => [
+              'label' => 'Unit',
+              'type' => 'input',
+              'value' => isset($peminjaman) ? $peminjaman->unit : null,
+            ],
             'nim' => [
               'label' => 'NIM/NIP',
               'type' => 'input',
