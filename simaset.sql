@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 05, 2022 at 08:07 PM
+-- Generation Time: Sep 06, 2022 at 10:48 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `aset` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `unit` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `unit` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `spesifikasi` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `kode` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `lokasi` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -54,17 +54,9 @@ CREATE TABLE `aset` (
 --
 
 INSERT INTO `aset` (`id`, `nama`, `unit`, `spesifikasi`, `kode`, `lokasi`, `jumlah`, `gambar`, `tanggal`, `keterangan`, `klasifikasi`, `tipe`, `perkiraan_biaya`, `kondisi`, `proses`, `status_kaur`, `status`, `created_at`, `updated_at`) VALUES
-(2, 'Seagate 27 edit', 'Unit 1', 'kecepatan transfer data yang tinggi dengan antarmuka USB 3.0 dengan menyambungkan ke port USB 3.0 SuperSpeed. USB 3.0 juga kompatibel dengan USB 2.0 untuk kompatibilitas sistem tambahan edit', 'Harddisk edit', 'lantai1-338.5-146.43333435058594', '1', 'Capture.PNG', NULL, NULL, 'sekretariat', NULL, NULL, NULL, NULL, NULL, NULL, '2022-08-08 18:50:16', '2022-08-08 19:37:57'),
-(3, 'Epson DS-410', 'Unit 2', 'Take your business productivity and effi ciency to the next level with Epson WorkForce DS-410 scanner. Featuring a built-in Automatic Document Feeder, this compact scanner can easily scan stacks of business cards and documents of up to A3 size.', 'Printer', 'lantai7-382.5-194.43333435058594', '1', 'printer.jpg', NULL, NULL, 'sekretariat', NULL, NULL, NULL, NULL, NULL, NULL, '2022-08-08 18:50:16', '2022-08-08 18:50:16'),
-(4, 'Logitech', 'Unit 3', NULL, NULL, NULL, '1', 'printer.jpg', '2021-05-17', 'keterangan', 'sekretariat', 'pengadaan', NULL, NULL, NULL, NULL, 'diterima', '2022-08-08 18:50:16', '2022-08-28 21:24:00'),
-(5, 'HP', 'Unit 4', NULL, 'PC', 'lantai9-221.5-111.43333435058594', '1', 'printer.jpg', '2021-01-31', NULL, 'sekretariat', 'maintenance', 90000, 'kondisi', 'Perbaikan', 'diterima', 'diterima', '2022-08-08 18:50:16', '2022-08-28 21:38:51'),
-(6, 'test', 'Unit 1', 'test', 'test', 'lantai5-312.5-205.43333435058594', '1', 'Hasil Typing Test.PNG', '0000-00-00', NULL, 'sekretariat', NULL, NULL, NULL, NULL, NULL, NULL, '2022-08-08 18:50:16', '2022-08-08 18:50:16'),
-(8, 'test', 'Unit 5', NULL, NULL, NULL, '1', '1.PNG', '2022-07-01', 'test', 'sekretariat', 'pengadaan', NULL, NULL, NULL, NULL, 'menunggu_diterima', '2022-08-08 21:35:36', '2022-08-08 21:50:42'),
-(11, 'Aset laboratorium', 'Unit 3', 'spesifikasi', '001923', 'lantai7-382.5-194.43333435058594', '3', 'env.PNG', NULL, NULL, 'laboratorium', NULL, NULL, NULL, NULL, NULL, NULL, '2022-08-28 19:32:14', '2022-08-28 19:32:14'),
-(12, 'Pengajuan maintenance aset', 'Unit 2', NULL, 'pma', 'lantai8-215.5-120.43333435058594', '1', '1.PNG', '2022-08-29', NULL, 'sekretariat', 'maintenance', 1000000, 'kondisi', 'Perawatan', NULL, 'menunggu_diterima', '2022-08-28 20:44:54', '2022-08-28 20:44:54'),
-(13, 'Komputer', 'Unit 2', 'ram 4 Gb', 'HP', 'lantai6-294.5-68.43333435058594', '1', '1.PNG', NULL, NULL, 'sekretariat', NULL, NULL, NULL, NULL, NULL, NULL, '2022-08-31 06:39:29', '2022-08-31 06:41:41'),
-(16, 'test', 'Unit 4', NULL, 'test', 'lantai1-547.5-489.43333435058594', '1', NULL, '2022-08-24', NULL, 'sekretariat', 'penghapusan', NULL, NULL, NULL, NULL, NULL, '2022-08-31 07:53:58', '2022-08-31 07:53:58'),
-(17, 'Maintenance Aset', 'Unit 1', NULL, 'kode', 'lantai1-338.5-146.43333435058594', '1', 'env.PNG', '2022-10-05', NULL, 'sekretariat', 'maintenance', 1000000, 'kondisi', 'Perawatan', NULL, 'menunggu_diterima', '2022-09-05 10:47:10', '2022-09-05 10:47:10');
+(18, 'Pengajuan pengadaan', 'Unit 1', NULL, NULL, NULL, '1', '1.PNG', '2022-09-01', 'Keterangan', 'sekretariat', 'pengadaan', NULL, NULL, NULL, 'diterima', 'diterima', '2022-09-05 23:40:46', '2022-09-05 23:54:07'),
+(19, 'Pengajuan maintenance', 'Unit 2', NULL, '1', 'lantai1-338.5-146.43333435058594', '1', 'Capture.PNG', '2022-09-02', NULL, 'sekretariat', 'maintenance', 100000, 'kondisi', 'Perawatan', 'diterima', 'diterima', '2022-09-05 23:44:40', '2022-09-05 23:56:03'),
+(20, 'Aset Sekretariat', NULL, 'Spesifikasi', 'Kode', 'lantai9-221.5-111.43333435058594', '1', 'env.PNG', NULL, NULL, 'sekretariat', NULL, NULL, NULL, NULL, NULL, NULL, '2022-09-05 23:58:56', '2022-09-05 23:58:56');
 
 -- --------------------------------------------------------
 
@@ -127,6 +119,7 @@ CREATE TABLE `password_resets` (
 CREATE TABLE `peminjaman` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `unit` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nim` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `aset_id` bigint(20) UNSIGNED NOT NULL,
@@ -141,8 +134,12 @@ CREATE TABLE `peminjaman` (
 -- Dumping data for table `peminjaman`
 --
 
-INSERT INTO `peminjaman` (`id`, `nama`, `nim`, `email`, `aset_id`, `tanggal`, `waktu`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'M. Bagas Setia Permana', '10104019', 'bagassetia271@gmail.com', 2, '2022-09-01', '5 hari', 'menunggu', '2022-09-01 03:24:31', '2022-09-01 03:24:31');
+INSERT INTO `peminjaman` (`id`, `nama`, `unit`, `nim`, `email`, `aset_id`, `tanggal`, `waktu`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'M. Bagas Setia', 'Unit 3', '10104019', 'bagassetia271@gmail.com', 20, '2022-09-07', '1 hari', 'diterima', '2022-09-06 00:00:19', '2022-09-06 00:34:32'),
+(3, 'M. Bagas Setia', 'Unit 3', '10104019', 'bagassetia271@gmail.com', 20, '2022-09-07', '1 hari', 'menunggu', '2022-09-06 00:00:19', '2022-09-06 00:34:32'),
+(4, 'M. Bagas Setia', 'Unit 3', '10104019', 'bagassetia271@gmail.com', 20, '2022-09-08', '1 hari', 'menunggu', '2022-09-06 00:00:19', '2022-09-06 00:34:32'),
+(5, 'M. Bagas Setia', 'Unit 3', '10104019', 'bagassetia271@gmail.com', 20, '2022-09-08', '1 hari', 'menunggu', '2022-09-06 00:00:19', '2022-09-06 00:34:32'),
+(6, 'M. Bagas Setia', 'Unit 3', '10104019', 'bagassetia271@gmail.com', 20, '2022-09-09', '1 hari', 'menunggu', '2022-09-06 00:00:19', '2022-09-06 00:34:32');
 
 -- --------------------------------------------------------
 
@@ -251,7 +248,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `aset`
 --
 ALTER TABLE `aset`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -269,7 +266,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

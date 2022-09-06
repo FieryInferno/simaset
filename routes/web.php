@@ -30,12 +30,15 @@ Route::middleware('auth')->group(function () {
   Route::get('status_aset', [App\Http\Controllers\AsetController::class, 'statusAset']);
   Route::get('status_aset/{aset}', [App\Http\Controllers\AsetController::class, 'showStatusAset']);
   Route::put('status_aset/{aset}/{status}', [App\Http\Controllers\AsetController::class, 'updateStatusAset']);
+  Route::get('status_peminjaman/{peminjaman}', [App\Http\Controllers\PeminjamanController::class, 'showStatusAset']);
+  Route::put('status_peminjaman/{peminjaman}/{status}', [App\Http\Controllers\PeminjamanController::class, 'updateStatusAset']);
   Route::get('akun', [App\Http\Controllers\AkunController::class, 'index']);
   Route::post('akun/{user}', [App\Http\Controllers\AkunController::class, 'update']);
   Route::post('logout', [App\Http\Controllers\LoginController::class, 'logout']);
   Route::resource('pengadaan_aset', App\Http\Controllers\PengadaanController::class);
   Route::resource('maintenance_aset', App\Http\Controllers\MaintenanceController::class);
   Route::resource('penghapusan_aset', App\Http\Controllers\PenghapusanController::class);
+  Route::get('peminjaman_aset/status', [App\Http\Controllers\PeminjamanController::class, 'status']);
   Route::resource('peminjaman_aset', App\Http\Controllers\PeminjamanController::class);
   Route::get('berkas', [App\Http\Controllers\BerkasController::class, 'index']);
   Route::get('berkas/download/{berkas}/{bulan}/{tahun}', [App\Http\Controllers\BerkasController::class, 'download']);

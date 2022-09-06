@@ -4,6 +4,7 @@
     <div class="container-fluid">
       <div class="row mb-1 d-flex justify-content-end">
         <a href="{{url('peminjaman_aset/create')}}" class="btn btn-primary">Tambah</a>
+        <a href="{{url('peminjaman_aset/status')}}" class="btn btn-primary">Status</a>
       </div>
       <x-alert-success/>
       <?php

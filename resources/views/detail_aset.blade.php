@@ -180,7 +180,7 @@
         </table>
       </div>
       @if ((auth()->user()->role === 'wadek' || auth()->user()->role === 'staff' || auth()->user()->role === 'kaur') && $aset->tipe)
-        @if ($aset->status === 'menunggu_diterima')
+        @if ($aset->status === 'menunggu_diterima' && ($aset->status_kaur === null || auth()->user()->role === 'wadek'))
           <div class="d-flex justify-content-center">
             <button
               type="button"
@@ -235,15 +235,13 @@
           </div>
         @endif
       @endif
-      @if (auth()->user()->role !== 'wadek')
-        @if (!$aset->tipe)
-          <div class="d-flex justify-content-center">
-            <div class="mb-5">
-              <a href="{{ url('aset/' . $aset->id . '/edit?klasifikasi=' . $aset->klasifikasi) }}" class="btn btn-light mr-1">Edit</a>
-              <x-button-modal url="{{url('aset/' . $aset->id)}}"/>
-            </div>
+      @if (auth()->user()->role !== 'wadek' && auth()->user()->role !== 'kaur' && auth()->user()->role !== 'staff')
+        <div class="d-flex justify-content-center">
+          <div class="mb-5">
+            <a href="{{ url('aset/' . $aset->id . '/edit?klasifikasi=' . $aset->klasifikasi) }}" class="btn btn-light mr-1">Edit</a>
+            <x-button-modal url="{{url('aset/' . $aset->id)}}"/>
           </div>
-        @endif
+        </div>
       @endif
     </div><!-- /.container-fluid -->
   </div>

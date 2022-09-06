@@ -11,6 +11,7 @@ return new class extends Migration
     Schema::create('peminjaman', function (Blueprint $table) {
       $table->id();
       $table->string('nama');
+      $table->string('unit');
       $table->string('nim');
       $table->string('email');
       $table->foreignId('aset_id')->constrained('aset')->onUpdate('cascade')->onDelete('cascade');

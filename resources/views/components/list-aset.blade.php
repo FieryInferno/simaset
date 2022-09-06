@@ -3,10 +3,18 @@
     <div class="col-lg-2">
       <div class="card">
         <div class="card-body text-center" style="padding: 0;">
-          <img src="{{asset('images/' . $aset->gambar)}}" width="100%" style="width: 100%;height: 170px;">
+          <img src="{{ $status === 'peminjaman' ? asset('images/' . $aset->aset->gambar) : asset('images/' . $aset->gambar) }}" width="100%" style="width: 100%;height: 170px;">
           <div><b>{{$aset->kode}}</b></div>
           <div>{{$aset->nama}}</div>
-          <div><a href="{{url($status ? 'status_aset/' . $aset->id : 'aset/' . $aset->id)}}">Detail</a></div>
+          <div><a href="{{
+            url(
+              $status ?
+                $status === 'peminjaman' ?
+                  'status_peminjaman/' . $aset->id :
+                  'status_aset/' . $aset->id :
+                'aset/' . $aset->id
+            )
+          }}">Detail</a></div>
         </div>
       </div>
     </div>

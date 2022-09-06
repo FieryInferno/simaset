@@ -87,7 +87,7 @@
                   </a>
                   <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="{{url('pengadaan_aset')}}" class="nav-link {{$active === 'pengadaan_aset' ? 'active' : ''}}">
+                      <a href="{{ auth()->user()->role === 'staff' || auth()->user()->role === 'kaur' ? url('status_aset?status=masuk') : url('pengadaan_aset') }}" class="nav-link {{$active === 'pengadaan_aset' ? 'active' : ''}}">
                         <p>Pengajuan Pengadaan Aset</p>
                       </a>
                     </li>
@@ -104,7 +104,7 @@
                       </li>
                     @endif
                     <li class="nav-item">
-                      <a href="{{ url('peminjaman_aset') }}" class="nav-link {{ $active === 'peminjaman_aset' ? 'active' : '' }}">
+                      <a href="{{ auth()->user()->role === 'staff' || auth()->user()->role === 'kaur' || auth()->user()->role === 'kaur_lab'  ? url('status_aset?status=peminjaman') : url('peminjaman_aset') }}" class="nav-link {{ $active === 'peminjaman_aset' ? 'active' : '' }}">
                         <p>Peminjaman Aset</p>
                       </a>
                     </li>

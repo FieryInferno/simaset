@@ -54,4 +54,32 @@ class PeminjamanController extends Controller
 
     return redirect('peminjaman_aset')->with('success', 'Berhasil tambah peminjaman aset.');
   }
+
+  public function showStatusAset(Peminjaman $peminjaman)
+  {
+    return view('peminjaman.detail', [
+      'beranda' => false,
+      'title' => 'Status Aset',
+      'active' => 'status_aset',
+      'aset' => $peminjaman,
+    ]);
+  }
+
+  public function updateStatusAset(Peminjaman $peminjaman, $status)
+  {
+    $peminjaman->status = $status;
+
+    $peminjaman->save();
+    return redirect()->back()->with('success', 'Berhasil edit status aset.');
+  }
+
+  public function status()
+  {
+    return view('peminjaman.status', [
+      'beranda' => false,
+      'title' => 'Status Aset',
+      'active' => 'status_aset',
+      'aset' => Peminjaman::groupBy('tanggal')->get(),
+    ]);
+  }
 }

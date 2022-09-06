@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aset;
+use App\Models\Peminjaman;
 use Illuminate\Http\Request;
 
 class AsetController extends Controller
@@ -70,6 +71,9 @@ class AsetController extends Controller
         break;
       case 'diperbaiki':
         $aset = Aset::where('tipe', '=', 'maintenance')->where('status_kaur', '=', auth()->user()->role !== 'wadek' ? null : 'diterima')->get();
+        break;
+      case 'peminjaman':
+        $aset = Peminjaman::all();
         break;
       
       default:

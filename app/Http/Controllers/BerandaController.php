@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Aset;
+use App\Models\Peminjaman;
 
 class BerandaController extends Controller
 {
@@ -15,7 +16,7 @@ class BerandaController extends Controller
       'active' => 'beranda',
       'pengadaan' => Aset::where('tipe', '=', 'pengadaan')->get(),
       'maintenance' => Aset::where('tipe', '=', 'maintenance')->get(),
-      'peminjaman' => Aset::where('tipe', '=', 'peminjaman')->get(),
+      'peminjaman' => Peminjaman::all(),
     ]);
   }
 }

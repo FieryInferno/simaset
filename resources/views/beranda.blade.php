@@ -48,7 +48,7 @@
         <div class="card-body overflow-auto" style="max-height: 12rem;">
           @foreach ($maintenance as $p)
             <div>
-              Pengajuan pengadaan aset {{ tgl_indo($p->tanggal) }} sudah
+              Pengajuan maintenance aset {{ tgl_indo($p->tanggal) }} sudah
               @switch ($p->status)
                 @case ('menunggu_diterima')
                   diajukan. Menunggu persetujuan.
@@ -69,9 +69,9 @@
         <div class="card-body overflow-auto" style="max-height: 12rem;">
           @foreach ($peminjaman as $p)
             <div>
-              Pengajuan pengadaan aset {{ tgl_indo($p->tanggal) }} sudah
+              Pengajuan peminjaman aset {{ tgl_indo($p->tanggal) }} sudah
               @switch ($p->status)
-                @case ('menunggu_diterima')
+                @case ('menunggu')
                   diajukan. Menunggu persetujuan.
                   @break
                 @case ('diterima')
