@@ -5,7 +5,7 @@
       <div class="text-center mb-5">
         <img src="{{asset('images/' . auth()->user()->foto)}}" style="width: 15rem;" class="img-preview">
       </div>
-      <div class="card" style="background-color: #58dfa0;box-shadow: 0 0 0;">
+      <div class="card" style="background-color: #018445;box-shadow: 0 0 0;">
         <x-alert-success/>
         <form action="{{url('akun/' . auth()->user()->id)}}" method="post" enctype="multipart/form-data">
           @csrf

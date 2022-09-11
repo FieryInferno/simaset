@@ -163,7 +163,7 @@
                     Apakah anda yakin akan menghapus data ini?
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #58dfa0;">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #018445;">Close</button>
                     <form action="{{url('penghapusan_aset/' . $data->id)}}" method="post">
                       @csrf
                       {{method_field('DELETE')}}

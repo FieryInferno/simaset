@@ -12,7 +12,7 @@
               'value' => null,
             ],
             'kode' => [
-              'label' => 'kode',
+              'label' => 'Kode',
               'type' => 'input',
               'value' => null,
             ],

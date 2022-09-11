@@ -133,7 +133,7 @@ class AsetController extends Controller
 
     $aset->save();
 
-    return redirect('aset')->with('success', 'Berhasil tambah aset.');
+    return redirect('aset?klasifikasi=' . $request->query('klasifikasi'))->with('success', 'Berhasil tambah aset.');
   }
 
   public function edit(Aset $aset)
@@ -167,10 +167,11 @@ class AsetController extends Controller
     $aset->kode = $request->kode;
     $aset->lokasi = $request->lokasi;
     $aset->jumlah = $request->jumlah;
+    $aset->klasifikasi = $request->unit;
 
     $aset->save();
 
-    return redirect('aset')->with('success', 'Berhasil edit aset.');
+    return redirect('aset?klasifikasi=' . $request->unit)->with('success', 'Berhasil edit aset.');
   }
 
   public function destroy(Aset $aset)

@@ -14,7 +14,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('dist')}}/css/adminlte.min.css">
 </head>
-<body class="hold-transition login-page" style="min-height: 496.8px;background-color: #58dfa0;">
+<body class="hold-transition login-page" style="min-height: 496.8px;background-color: rgb(1, 132, 69);">
   <div class="container-fluid">
     <div class="row">
       <div class="col-8" style="padding-top: 50px;">
@@ -28,7 +28,8 @@
         <div class="login-box">
           <div class="card">
             <div class="card-body login-card-body" style="border-radius: 10px;">
-              <p class="login-box-msg" style="padding-top: 25px;"><b style="font-size: 35px;">LOGIN</b></p>
+              <p class="login-box-msg" style="padding-top: 25px; padding-bottom: 0px;"><b style="font-size: 34px;">MANAJEMEN ASET</b></p>
+              <p class="login-box-msg"><b style="font-size: 35px;">LOGIN</b></p>
 
               <form action="{{url('login')}}" method="post">
                 @csrf

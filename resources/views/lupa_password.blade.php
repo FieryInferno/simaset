@@ -14,7 +14,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('dist')}}/css/adminlte.min.css">
 </head>
-<body class="hold-transition login-page" style="min-height: 496.8px;background-color: #58dfa0;">
+<body class="hold-transition login-page" style="min-height: 496.8px;background-color: #018445;">
   <div class="login-box">
     <div class="card">
       <div class="card-body login-card-body" style="border-radius: 10px;">

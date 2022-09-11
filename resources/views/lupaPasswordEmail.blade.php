@@ -201,8 +201,8 @@
 		}
 	</style>
 </head>
-<body style="background-color: #58dfa0; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;">
-  <table border="0" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #58dfa0;" width="100%">
+<body style="background-color: #018445; margin: 0; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;">
+  <table border="0" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #018445;" width="100%">
     <tbody>
       <tr>
         <td>

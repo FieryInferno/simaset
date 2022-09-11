@@ -17,7 +17,7 @@
               'value' => isset($aset) ? $aset->spesifikasi : null,
             ],
             'kode' => [
-              'label' => 'kode',
+              'label' => 'Kode',
               'type' => 'input',
               'value' => isset($aset) ? $aset->kode : null
             ],
@@ -194,15 +194,53 @@
               'type' => 'input',
               'value' => isset($aset) ? $aset->jumlah : null,
             ],
+          ],
+          'buttonText' => 'Simpan',
+          'mode' => isset($aset) ? 'edit' : null,
+        ];
+
+        if(isset($aset)) {
+          $form['fields']['unit'] = [
+            'label' => 'Unit',
+            'type' => 'select',
+            'value' => $aset->klasifikasi,
+            'data' => [
+              (object) [
+                'id' => 'sekretariat',
+                'nama' => 'Sekretariat',
+              ],
+              (object) [
+                'id' => 'akademik',
+                'nama' => 'Akademik',
+              ],
+              (object) [
+                'id' => 'kemahasiswaan',
+                'nama' => 'Kemahasiswaan',
+              ],
+              (object) [
+                'id' => 'keuangan',
+                'nama' => 'Keuangan',
+              ],
+              (object) [
+                'id' => 'laboratorium',
+                'nama' => 'Laboratorium',
+              ],
+            ],
+          ];
+          $form['fields']['gambar'] = [
+            'label' => 'Gambar',
+            'type' => 'file',
+            'value' => isset($aset) ? $aset->gambar : null,
+          ];
+        } else {
+          $form['fields']['gambar'] = [
             'gambar' => [
               'label' => 'Gambar',
               'type' => 'file',
               'value' => isset($aset) ? $aset->gambar : null,
             ],
-          ],
-          'buttonText' => 'Simpan',
-          'mode' => isset($aset) ? 'edit' : null,
-        ];
+          ];
+        }
       ?>
       <x-form :form=$form/>
     </div><!-- /.container-fluid -->

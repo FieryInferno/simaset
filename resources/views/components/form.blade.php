@@ -1,4 +1,4 @@
-<div class="card" style="background-color: #58dfa0;box-shadow: 0 0 0;">
+<div class="card" style="background-color: #018445;box-shadow: 0 0 0;">
   <form method="post" action="{{$form['action']}}" enctype="multipart/form-data">
     @csrf
     {{ $form['mode'] === 'edit' ? method_field('PUT') : '' }}
