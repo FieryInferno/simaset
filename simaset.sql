@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2022 at 10:48 AM
+-- Generation Time: Sep 11, 2022 at 05:10 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -56,7 +56,10 @@ CREATE TABLE `aset` (
 INSERT INTO `aset` (`id`, `nama`, `unit`, `spesifikasi`, `kode`, `lokasi`, `jumlah`, `gambar`, `tanggal`, `keterangan`, `klasifikasi`, `tipe`, `perkiraan_biaya`, `kondisi`, `proses`, `status_kaur`, `status`, `created_at`, `updated_at`) VALUES
 (18, 'Pengajuan pengadaan', 'Unit 1', NULL, NULL, NULL, '1', '1.PNG', '2022-09-01', 'Keterangan', 'sekretariat', 'pengadaan', NULL, NULL, NULL, 'diterima', 'diterima', '2022-09-05 23:40:46', '2022-09-05 23:54:07'),
 (19, 'Pengajuan maintenance', 'Unit 2', NULL, '1', 'lantai1-338.5-146.43333435058594', '1', 'Capture.PNG', '2022-09-02', NULL, 'sekretariat', 'maintenance', 100000, 'kondisi', 'Perawatan', 'diterima', 'diterima', '2022-09-05 23:44:40', '2022-09-05 23:56:03'),
-(20, 'Aset Sekretariat', NULL, 'Spesifikasi', 'Kode', 'lantai9-221.5-111.43333435058594', '1', 'env.PNG', NULL, NULL, 'sekretariat', NULL, NULL, NULL, NULL, NULL, NULL, '2022-09-05 23:58:56', '2022-09-05 23:58:56');
+(20, 'Aset Sekretariat', NULL, 'Spesifikasi', 'Kode', 'lantai9-221.5-111.43333435058594', '1', 'env.PNG', NULL, NULL, 'sekretariat', NULL, NULL, NULL, NULL, NULL, NULL, '2022-09-05 23:58:56', '2022-09-05 23:58:56'),
+(21, 'Aset akademik', NULL, 'spesifikasi', 'kode', 'lantai1-338.5-146.43333435058594', '1', 'Capture.PNG', NULL, NULL, 'akademik', NULL, NULL, NULL, NULL, NULL, NULL, '2022-09-11 07:17:13', '2022-09-11 07:17:13'),
+(22, 'Aset akademik 0', NULL, 'spesifikasi', 'kode', 'lantai1-440.5-138.43333435058594', '1', 'Hasil Typing Test.PNG', NULL, NULL, 'keuangan', NULL, NULL, NULL, NULL, NULL, NULL, '2022-09-11 07:19:10', '2022-09-11 07:46:51'),
+(23, 'Aset kemahasiswaan', NULL, 'spesifikasi', 'kode', 'lantai1-330.5-490.43333435058594', '2', 'Hasil Typing Test.PNG', NULL, NULL, 'kemahasiswaan', NULL, NULL, NULL, NULL, NULL, NULL, '2022-09-11 07:21:33', '2022-09-11 07:21:33');
 
 -- --------------------------------------------------------
 
@@ -248,7 +251,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `aset`
 --
 ALTER TABLE `aset`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
