@@ -65,9 +65,11 @@ class PeminjamanController extends Controller
     ]);
   }
 
-  public function updateStatusAset(Peminjaman $peminjaman, $status)
+  public function updateStatusAset(Request $request, Peminjaman $peminjaman, $status)
   {
     $peminjaman->status = $status;
+
+    if ($request->message) $peminjaman->message = $message;
 
     $peminjaman->save();
     return redirect()->back()->with('success', 'Berhasil edit status aset.');

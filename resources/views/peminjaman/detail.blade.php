@@ -49,17 +49,25 @@
           <div class="modal fade" id="setuju" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
-                <div class="modal-body">
-                  Apakah anda yakin akan menyetujui pengajuan ini?
-                </div>
-                <div class="modal-footer" style="justify-content: center;">
-                  <button type="button" class="btn btn-primary">Tidak</button>
-                  <form action="{{url('status_peminjaman/' . $aset->id . '/diterima')}}" method="post">
+                <form action="{{url('status_peminjaman/' . $aset->id . '/diterima')}}" method="post">
+                  <div class="modal-body">
+                    Apakah anda yakin akan menyetujui pengajuan ini?
                     @csrf
                     {{method_field('PUT')}}
+                    @if (auth()->user()->role === 'kaur_lab')
+                      <textarea
+                        name="message"
+                        class="form-control"
+                        cols="30"
+                        rows="5"
+                      ></textarea>
+                    @endif
+                  </div>
+                  <div class="modal-footer" style="justify-content: center;">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Tidak</button>
                     <button type="submit" class="btn btn-primary">Ya</button>
-                  </form>
-                </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -74,17 +82,25 @@
           <div class="modal fade" id="tolak" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
-                <div class="modal-body">
-                  Apakah anda yakin akan menolak pengajuan ini?
-                </div>
-                <div class="modal-footer" style="justify-content: center;">
-                  <button type="button" class="btn btn-primary">Tidak</button>
-                  <form action="{{url('status_peminjaman/' . $aset->id . '/ditolak')}}" method="post">
+                <form action="{{url('status_peminjaman/' . $aset->id . '/ditolak')}}" method="post">
+                  <div class="modal-body">
+                    Apakah anda yakin akan menolak pengajuan ini?
                     @csrf
                     {{method_field('PUT')}}
+                    @if (auth()->user()->role === 'kaur_lab')
+                      <textarea
+                        name="message"
+                        class="form-control"
+                        cols="30"
+                        rows="5"
+                      ></textarea>
+                    @endif
+                  </div>
+                  <div class="modal-footer" style="justify-content: center;">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Tidak</button>
                     <button type="submit" class="btn btn-primary">Ya</button>
-                  </form>
-                </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
